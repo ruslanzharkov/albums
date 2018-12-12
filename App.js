@@ -5,7 +5,7 @@ import Header from './src/components/Header';
 export default class App extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Header/>
       </View>
     );
@@ -15,9 +15,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    marginTop: 20
   },
   welcome: {
     fontSize: 20,
