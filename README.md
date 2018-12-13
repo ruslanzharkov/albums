@@ -1,2 +1,2 @@
 # Albums application
- This app works fine with images
+ This app is shop for music albums
