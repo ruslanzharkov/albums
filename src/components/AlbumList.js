@@ -9,7 +9,7 @@ class AlbumList extends Component{
     render() {
         return (
             <View>
-                <Text>Music</Text>
+                <Text></Text>
             </View>
         )
     }
