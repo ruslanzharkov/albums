@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
         <Text>Home Screen</Text>
       </View>
     );
-  }
+  } // make this for correct works!
 }
 
 const AppNavigator = createStackNavigator({
