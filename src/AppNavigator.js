@@ -53,5 +53,5 @@ export default class Root extends Component {
         <AppWithNavigationState />
       </Provider>
     );
-  }
+  }     // need to refactor
 }
