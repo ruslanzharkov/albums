@@ -1,20 +1,19 @@
-import React from 'react';
-import {  
-    createStackNavigator
-} from 'react-navigation';
 import {
+    createStackNavigator,
+  } from 'react-navigation';
+  import {
+    createStore,
+    applyMiddleware,
+    combineReducers,
+  } from 'redux';
+  import {
     reduxifyNavigator,
     createReactNavigationReduxMiddleware,
     createNavigationReducer,
   } from 'react-navigation-redux-helpers';
-import {
-    createStore,
-    applyMiddleware,
-    combineReducers,
-    Provider
-} from 'redux';
+  import { Provider, connect } from 'react-redux';
+  import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
 import PostContainer from './containers/PostContainer';
 
 const AppNavigator = createStackNavigator({
@@ -46,8 +45,8 @@ const store = createStore(
   appReducer,
   applyMiddleware(middleware),
 );
-
-class Root extends React.Component {
+ 
+export default class Root extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -56,5 +55,3 @@ class Root extends React.Component {
     );
   }
 }
-
-export default Root;
