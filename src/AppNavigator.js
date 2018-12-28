@@ -1,16 +1,8 @@
-import { createStackNavigator, createAppContainer, addNavigationHelpers } from 'react-navigation';
+import React from 'react';
+import { addNavigationHelpers, createStackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-
-import PostContainer from './containers/PostContainer';
-
-const AppNavigator = createStackNavigator({
-    Home: {
-      screen: PostContainer,
-    }
-  }, {
-      initialRouteName: 'Home',
-  });
-
+import AppNavigator from './navigation/appNavigator';
+  
 const AppWithNavigationState = ({ dispatch, nav }) => (
     <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
 );

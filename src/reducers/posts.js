@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/actions';
 
-export const posts = (state = [], action) => {
+const posts = (state = [], action) => {
     switch (action.type) {
         case actionTypes.GET_POSTS:
             return action.payload;
@@ -8,3 +8,5 @@ export const posts = (state = [], action) => {
             return state;
     }
 };
+
+export default posts;
