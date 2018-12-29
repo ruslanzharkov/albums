@@ -25,4 +25,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default PostContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);
