@@ -1,2 +1,2 @@
 # Albums application
- This app is shop for music albums
+ This application for add interesting posts
