@@ -1,16 +1,4 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { store } from './src/store';
-import AppWithNavigationState from './src/AppNavigator';
+import { createAppContainer } from 'react-navigation';
+import AppNavigator from './src/navigation/appNavigator';
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <AppWithNavigationState />
-      </Provider>
-    );
-  }     
-}
-
-export default App;
+export default createAppContainer(AppNavigator);

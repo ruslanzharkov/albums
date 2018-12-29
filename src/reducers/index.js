@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import postsReducer from './posts';
-import navReducer from './navReducer';
+import { posts } from './posts';
 
 const reducers = combineReducers({
-    posts: postsReducer,
-    nav: navReducer, 
+    posts,
 });
 
 export default reducers;
