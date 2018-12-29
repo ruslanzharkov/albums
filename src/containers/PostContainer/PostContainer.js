@@ -9,7 +9,10 @@ class PostContainer extends Component {
     render() {
         return (
             <View>
-                <PostsScreen getPosts={this.props.getPosts}/>
+                <PostsScreen
+                    getPosts={this.props.getPosts}
+                    posts={this.props.posts}
+                />
             </View>
         );
     }
