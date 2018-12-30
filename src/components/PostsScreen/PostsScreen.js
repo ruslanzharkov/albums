@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Button} from 'react-native';
 
 class PostsScreen extends Component {
     componentDidMount() {
@@ -12,6 +12,10 @@ class PostsScreen extends Component {
             <View>
                 <Text>List</Text>
                 {this.props.posts && this.props.posts.map(item => <Text>{item.name}</Text>)}
+                <Button
+                    title="Go to Details"
+                    onPress={() => this.props.navigation.navigate('Details')}
+                />
             </View>
         );
     }

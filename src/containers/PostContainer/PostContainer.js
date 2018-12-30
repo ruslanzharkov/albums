@@ -10,6 +10,7 @@ class PostContainer extends Component {
             <PostsScreen
                 getPosts={this.props.getPosts}
                 posts={this.props.posts}
+                navigation={this.props.navigation}
             />
         );
     }

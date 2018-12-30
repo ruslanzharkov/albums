@@ -1,5 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 import PostContainer from '../containers/PostContainer';
+import PostDetailsContainer from '../containers/PostDetailsContainer';
 
 const AppNavigator = createStackNavigator({
     Main: { 
@@ -8,6 +9,13 @@ const AppNavigator = createStackNavigator({
             title: 'Home'
         }
     },
+    Details: {
+        screen: PostDetailsContainer,
+        navigationOptions: {
+            title: 'Details'
+        }
+    }
+
 }, {
     initialRouteName: 'Main',
 
