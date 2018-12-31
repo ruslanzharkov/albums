@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PostsScreen from '../../components/PostsScreen/PostsScreen';
-import {actionCreators} from '../../actions';
+import { actionCreators } from '../../actions';
 
 class PostContainer extends Component {
     render() {

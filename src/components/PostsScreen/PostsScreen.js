@@ -10,7 +10,6 @@ class PostsScreen extends Component {
         console.log(this.props.posts, 'posts');
         return (
             <View>
-                <Text>List</Text>
                 {this.props.posts && this.props.posts.map(item => <Text>{item.name}</Text>)}
                 <Button
                     title="Go to Details"
