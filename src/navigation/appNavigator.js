@@ -1,8 +1,8 @@
-import { createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 import PostContainer from '../containers/PostContainer';
 import PostDetailsContainer from '../containers/PostDetailsContainer';
 
-const AppNavigator = createStackNavigator({
+const AppNavigator = createBottomTabNavigator({
     Main: { 
         screen: PostContainer,
         navigationOptions: {
