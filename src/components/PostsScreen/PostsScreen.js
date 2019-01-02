@@ -10,7 +10,7 @@ class PostsScreen extends Component {
         console.log(this.props.posts, 'posts');
         return (
             <View>
-                {this.props.posts && this.props.posts.map(item => <Text>{item.name}</Text>)}
+                {this.props.posts && this.props.posts.map((item, index) => <Text key={index}>{item.name}</Text>)}
                 <Button
                     title="Go to Details"
                     onPress={() => this.props.navigation.navigate('Details')}
