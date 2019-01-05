@@ -14,8 +14,6 @@ class IconWithBadge extends React.Component {
                 {badgeCount > 0 && (
                     <View
                         style={{
-                            // /If you're using react-native < 0.57 overflow outside of the parent
-                            // will not work on Android, see https://git.io/fhLJ8
                             position: 'absolute',
                             right: -6,
                             top: -3,
