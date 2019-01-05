@@ -42,10 +42,10 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
     let IconComponent = Ionicons;
     let iconName;
-    if (routeName === 'Home') {
+    if (routeName === 'Main') {
         iconName = `ios-information-circle${focused ? '' : '-outline'}`;
         IconComponent = HomeIconWithBadge;
-    } else if (routeName === 'Settings') {
+    } else if (routeName === 'Details') {
         iconName = `ios-options${focused ? '' : '-outline'}`;
     }
 
