@@ -55,15 +55,9 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 const AppNavigator = createBottomTabNavigator({
     Main: { 
         screen: PostContainer,
-        navigationOptions: {
-            title: 'Home'
-        }
     },
     Details: {
         screen: PostDetailsContainer,
-        navigationOptions: {
-            title: 'Details'
-        }
     }
 
 }, {
