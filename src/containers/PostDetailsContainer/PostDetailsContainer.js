@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PostDetailsScreen from '../../components/PostDetails';
 
 class PostDetailsContainer extends Component {
     render() {
         return (
-            <PostDetailsScreen/>
+            <PostDetailsScreen />
         );
     }
-};
-
+}
 
 function mapStateToProps(state) {
     return {

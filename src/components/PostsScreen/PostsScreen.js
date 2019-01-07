@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Text, View, Button} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, Button } from 'react-native';
 
 class PostsScreen extends Component {
     componentDidMount() {
@@ -7,10 +7,11 @@ class PostsScreen extends Component {
     }
 
     render() {
-        console.log(this.props.posts, 'posts');
         return (
             <View>
-                {this.props.posts && this.props.posts.map((item, index) => <Text key={index}>{item.name}</Text>)}
+                {this.props.posts && this.props.posts.map((item, index) =>
+                    <Text key={index}>{item.name}</Text>)
+                }
                 <Button
                     title="Go to Details"
                     onPress={() => this.props.navigation.navigate('Details')}
