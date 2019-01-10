@@ -6,7 +6,7 @@ class PostDetailsScreen extends Component {
     render() {
         return (
             <View>
-                <Header title={'Albums'}/>
+                <Header title={'Albums'} />
                 <Text>Details screen</Text>
             </View>
         );

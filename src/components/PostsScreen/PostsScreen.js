@@ -10,7 +10,7 @@ class PostsScreen extends Component {
     render() {
         return (
             <View>
-                <Header title={'Albums'}/>
+                <Header title={'Albums'} />
                 {this.props.posts && this.props.posts.map((item, index) =>
                     <Text key={index}>{item.name}</Text>)
                 }
