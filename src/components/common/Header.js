@@ -6,7 +6,7 @@ const Header = (props) => {
 
     return (
         <View style={viewStyle}>
-            <Text style={textStyle}>{props.headerText}</Text>
+            <Text style={textStyle}>{props.title}</Text>
         </View>
     );
 };
@@ -25,6 +25,7 @@ const styles = {
         position: 'relative'
     },
     textStyle: {
+        paddingTop: 15,
         fontSize: 20
     }
 };
