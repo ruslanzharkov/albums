@@ -17,20 +17,16 @@ class IconWithBadge extends React.Component {
     }
 }
 
-const HomeIconWithBadge = props => {
-    return <IconWithBadge {...props} badgeCount={3} />;
-};
-
 const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
-    let IconComponent = Ionicons;
+    const IconComponent = Ionicons;
     let iconName;
     if (routeName === 'Home') {
-        iconName = `ios-home${focused ? '' : '-outline'}`;
+        iconName = 'ios-home';
     } else if (routeName === 'Details') {
-        iconName = `ios-settings${focused ? '' : '-outline'}`;
+        iconName = 'ios-settings';
     }
-
+    
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
