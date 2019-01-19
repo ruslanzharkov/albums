@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
 import Header from '../common/Header';
+import firebase from 'react-native-firebase';
 
 class PostsScreen extends Component {
     componentDidMount() {
         this.props.getPosts();
+        firebase.auth().signInAnonymously()
+            .then((user) => {
+                console.log(user.isAnonymous);
+            })
+            .catch(err => {
+                console.log(err)
+            }) 
     }
 
     render() {
