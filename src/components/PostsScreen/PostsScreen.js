@@ -11,8 +11,8 @@ class PostsScreen extends Component {
                 console.log(user.isAnonymous);
             })
             .catch(err => {
-                console.log(err)
-            }) 
+                console.log(err);
+            }); 
     }
 
     render() {
@@ -20,7 +20,9 @@ class PostsScreen extends Component {
             <View>
                 <Header title={'Albums'} />
                 {this.props.posts && this.props.posts.map((item, index) =>
-                    <Text key={index}>{item.name}</Text>)
+                    <Text key={index}>
+                        {item.name}
+                    </Text>)
                 }
                 <Button
                     title="Go to Details"
