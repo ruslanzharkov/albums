@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
-import Header from '../common/Header';
 import firebase from 'react-native-firebase';
+import Header from '../common/Header';
 
 class PostsScreen extends Component {
     componentDidMount() {
