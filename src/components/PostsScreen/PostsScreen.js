@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ActivityIndicator } from 'react-native';
+import { Text, View, ActivityIndicator } from 'react-native';
 import _ from 'lodash';
 import { db } from '../../config/db';
 import Header from '../common/Header';
@@ -24,13 +24,15 @@ class PostsScreen extends Component {
             );
 
         return this.props.posts.map((item, index) =>
-            <View key={index}>
-                <Text>
-                    {item.title}
-                </Text>
-                <Text>
-                    {item.author}
-                </Text>
+            <View key={index} style={styles.postContainer}>
+                <View style={styles.innerPostContainer}>
+                    <Text>
+                        {item.title}
+                    </Text>
+                    <Text>
+                        {item.author}
+                    </Text>
+                </View>
             </View>
         );
     };
@@ -46,3 +48,25 @@ class PostsScreen extends Component {
 }
 
 export default PostsScreen;
+
+const styles = {
+    postContainer: {
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        padding: 10,
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height: 1
+        },
+        shadowRadius: 3,
+        shadowOpacity: 0.2,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 15,
+    },
+    innerPostContainer: {
+        marginLeft: 10,
+        marginRight: 10,
+    }
+};
