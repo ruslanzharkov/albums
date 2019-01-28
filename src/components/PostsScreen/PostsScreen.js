@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import _ from 'lodash';
 import { db } from '../../config/db';
-import Header from '../common/Header';
 
 class PostsScreen extends Component {
     static navigationOptions = {
