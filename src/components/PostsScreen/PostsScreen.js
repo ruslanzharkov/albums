@@ -5,6 +5,10 @@ import { db } from '../../config/db';
 import Header from '../common/Header';
 
 class PostsScreen extends Component {
+    static navigationOptions = {
+        title: 'Home',
+    };
+
     componentDidMount() {
         this.props.getPosts();
         // db.ref('posts/1').set({
@@ -59,7 +63,6 @@ class PostsScreen extends Component {
     render() {
         return (
             <View>
-                <Header title={'Albums'} />
                 {this.renderPosts()}
             </View>
         );
@@ -83,7 +86,7 @@ const styles = {
             height: 1
         },
         shadowRadius: 3,
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.3,
         marginLeft: 15,
         marginRight: 15,
         marginTop: 15,

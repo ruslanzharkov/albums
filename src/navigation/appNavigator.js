@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PostContainer from '../containers/PostContainer';
 import PostDetailsContainer from '../containers/PostDetailsContainer';
@@ -23,21 +23,16 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     let iconName;
     if (routeName === 'Home') {
         iconName = 'ios-home';
-    } else if (routeName === 'Details') {
+    } else if (routeName === 'Settings') {
         iconName = 'ios-settings';
     }
     
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
-const AppNavigator = createBottomTabNavigator({
-    Home: { 
-        screen: PostContainer,
-    },
-    Details: {
-        screen: PostDetailsContainer,
-    }
-
+const AppBottomNavigator = createBottomTabNavigator({
+    Home: PostContainer,
+    Settings: PostContainer,
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
@@ -49,4 +44,21 @@ const AppNavigator = createBottomTabNavigator({
     },
 });
 
-export default AppNavigator;
+export default createStackNavigator(
+    {
+        Home: AppBottomNavigator,
+        Details: PostDetailsContainer,
+    }, 
+    {
+        defaultNavigationOptions: {
+            title: 'Albums',
+            headerStyle: {
+              backgroundColor: '#ed5e42',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          },
+    }
+);
