@@ -19,7 +19,7 @@ class PostsScreen extends Component {
     }
 
     goDetailsScreen = (postDetailInfo) => {
-        alert(postDetailInfo.title);
+        this.props.navigation.navigate('Details');
     };
 
     renderPosts = () => {
