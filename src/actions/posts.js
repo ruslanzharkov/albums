@@ -1,5 +1,5 @@
 import * as actionTypes from '../constants/actions';
-import { db } from '../config/db';
+import {db} from '../config/db';
 
 export const getPosts = () => {
     return dispatch => {
@@ -13,6 +13,15 @@ export const getPosts = () => {
                 type: actionTypes.GET_POSTS,
                 payload: posts
             });
+        });
+    };
+};
+
+export const getPostDetails = (postDetails) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.GET_POST_DETAILS,
+            payload: { ...postDetails }
         });
     };
 };
