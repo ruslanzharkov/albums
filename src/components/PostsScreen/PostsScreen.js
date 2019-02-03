@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import { db } from '../../config/db';
 
@@ -13,35 +13,42 @@ class PostsScreen extends Component {
         // db.ref('posts/1').set({
         //     author: 'Zharkov Ruslan',
         //     title: 'About React Native',
-        //     content: 'React Native lets you build mobile apps using JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, you dont build a mobile web app, an HTML5 app, or a hybrid app. You build a real mobile app thats indistinguishable from an app built using Objective-C, Java, Kotlin, or Swift. React Native uses the same fundamental UI building blocks as regular iOS and Android apps. You just put those building blocks together using JavaScript and React. React Native lets you build your app faster. Instead of recompiling, you can reload your app instantly. With hot reloading, you can even run new code while retaining your application state. React Native combines smoothly with components written in Objective-C, Java, Kotlin, or Swift. Its simple to drop down to native code if you need to optimize a few aspects of your application. Its also easy to build part of your app in React Native, and part of your app using native code directly - thats how the Facebook app works.'
+        //     content: ''
         // }).then(() => console.log('success!'))
         // .catch((err) => console.log(err));
     }
 
+    goDetailsScreen = (postDetailInfo) => {
+        alert(postDetailInfo.title);
+    };
+
     renderPosts = () => {
-        if (_.isEmpty(this.props.posts))  
+        if (_.isEmpty(this.props.posts))
             return (
                 <View style={styles.activity}>
                     <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             );
 
-        return this.props.posts.map((item, index) =>
+        return this.props.posts.map((post, index) =>
             <View key={index} style={styles.postContainer}>
-                <View style={styles.innerPostContainer}>
+                <TouchableOpacity
+                    style={styles.innerPostContainer}
+                    onPress={() => this.goDetailsScreen(post)}
+                >
                     <View>
                         <Text>
-                            {item.author}
+                            {post.author}
                         </Text>
                     </View>
-                    
+
                     <View style={styles.aboutContainer}>
                         <View style={styles.titleContainer}>
                             <Text style={styles.titleContent}>
                                 Title:
                             </Text>
                             <Text>
-                                {item.title}
+                                {post.title}
                             </Text>
                         </View>
 
@@ -54,7 +61,7 @@ class PostsScreen extends Component {
                             </Text>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             </View>
         );
     };
@@ -92,7 +99,7 @@ const styles = {
     },
     innerPostContainer: {
         flexGrow: 1,
-        flexDirection: 'column',  
+        flexDirection: 'column',
     },
     viewStyle: {
         flex: 1,
