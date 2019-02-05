@@ -3,6 +3,18 @@ import {View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class PostDetailsScreen extends Component {
+    static defaultNavigationOptions = {
+        title: 'Hello!',
+    };
+
+    componentDidMount() {
+        this.props.navigation.setParams({
+            appBar: {
+                title: 'Clientes'
+            }
+        });
+    }
+
     renderContent = () => {
         return (
             <View style={styles.containerContent}>

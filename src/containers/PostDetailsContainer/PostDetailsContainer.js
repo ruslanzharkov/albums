@@ -6,7 +6,10 @@ import PostDetailsScreen from '../../components/PostDetails';
 class PostDetailsContainer extends Component {
     render() {
         return (
-            <PostDetailsScreen postDetails={this.props.postDetails} />
+            <PostDetailsScreen
+                navigation={this.props.navigation}
+                postDetails={this.props.postDetails}
+            />
         );
     }
 }
