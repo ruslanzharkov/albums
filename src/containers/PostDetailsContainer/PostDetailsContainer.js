@@ -6,14 +6,14 @@ import PostDetailsScreen from '../../components/PostDetails';
 class PostDetailsContainer extends Component {
     render() {
         return (
-            <PostDetailsScreen />
+            <PostDetailsScreen postDetails={this.props.postDetails} />
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        postDetails: state.postDetails
     };
 }
 

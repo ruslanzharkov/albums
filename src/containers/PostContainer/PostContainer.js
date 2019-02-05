@@ -8,9 +8,11 @@ class PostContainer extends Component {
     render() {
         return (
             <PostsScreen
-                getPosts={this.props.getPosts}
                 posts={this.props.posts}
                 navigation={this.props.navigation}
+
+                getPosts={this.props.getPosts}
+                getPostDetails={this.props.getPostDetails}
             />
         );
     }
@@ -24,7 +26,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     const actions = {
-        getPosts: actionCreators.getPosts
+        getPosts: actionCreators.getPosts,
+        getPostDetails: actionCreators.getPostDetails,
     };
     return bindActionCreators(actions, dispatch);
 }

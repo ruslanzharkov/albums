@@ -5,9 +5,11 @@ export const getPosts = () => {
     return dispatch => {
         db.ref('posts').once('value', (data) => {
             let posts = [], fireData = data.toJSON();
-            for (let i = 0; i < fireData.length; i++)
+
+            for (let i = 0; i < fireData.length; i++) {
                 if (fireData[i] !== null)
                     posts.push(fireData[i]);
+            }
 
             dispatch({
                 type: actionTypes.GET_POSTS,

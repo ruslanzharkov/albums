@@ -19,6 +19,7 @@ class PostsScreen extends Component {
     }
 
     goDetailsScreen = (postDetailInfo) => {
+        this.props.getPostDetails(postDetailInfo);
         this.props.navigation.navigate('Details');
     };
 
@@ -57,7 +58,7 @@ class PostsScreen extends Component {
                                 Date:
                             </Text>
                             <Text>
-                                {'10/01/19 23:44'}
+                                {'10/01/19'}
                             </Text>
                         </View>
                     </View>
@@ -82,7 +83,7 @@ const styles = {
         marginTop: 20
     },
     postContainer: {
-        height: 70,
+        height: 80,
         backgroundColor: '#fff',
         borderRadius: 10,
         padding: 10,

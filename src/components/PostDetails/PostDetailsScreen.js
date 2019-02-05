@@ -5,7 +5,7 @@ class PostDetailsScreen extends Component {
     render() {
         return (
             <View>
-                <Text>Details screen</Text>
+                <Text>{this.props.postDetails.title}</Text>
             </View>
         );
     }
