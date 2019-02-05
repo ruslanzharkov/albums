@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios --simulator=\"iPhone X\"",
     "android": "react-native run-android",
+    "metro-clean": "sh ./clean_bundle.sh",
     "test": "jest"
   },
   "dependencies": {
