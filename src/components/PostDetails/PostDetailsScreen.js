@@ -29,7 +29,7 @@ class PostDetailsScreen extends Component {
     render() {
         return (
             <View>
-                <View style={styles.containerContent}>
+                <View style={[styles.containerContent, styles.eyeIcon]}>
                     <Ionicons name={'ios-eye'} size={20} color={'black'} />
                 </View>
                 {this.renderContent()}
@@ -39,10 +39,14 @@ class PostDetailsScreen extends Component {
 }
 
 const styles = {
+    eyeIcon: {
+        marginTop: 5,
+    },
     title: {
         fontSize: 26
     },
     containerContent: {
+        marginTop: 3,
         marginHorizontal: 10
     }
 };
