@@ -16,7 +16,7 @@ Include logo/demo screenshot etc.
 ## Tech/framework used
 
 <b>Built with</b>
-- [React-Native](https://electron.atom.io)
+- [React-Native](https://facebook.github.io/react-native/)
 
 ## Features
 App store data in Firebase. It\`s simple to use in development and fast for read/write data
