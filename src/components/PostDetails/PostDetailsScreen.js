@@ -7,14 +7,6 @@ class PostDetailsScreen extends Component {
         title: 'Hello!',
     };
 
-    componentDidMount() {
-        this.props.navigation.setParams({
-            appBar: {
-                title: 'Clientes'
-            }
-        });
-    }
-
     renderContent = () => {
         return (
             <View style={styles.containerContent}>
