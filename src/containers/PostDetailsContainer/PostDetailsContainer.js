@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PostDetailsScreen from '../../components/PostDetails';
+import PostDetailsScreen from '../../components/PostDetailsScreen';
 
 class PostDetailsContainer extends Component {
     render() {
