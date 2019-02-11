@@ -4,15 +4,18 @@ import {View} from 'react-native';
 class AddPostScreen {
     constructor(props) {
         super(props);
-        this.state ={
-
-        }
+        this.state = {
+            title: '',
+            content: ''
+        };
     }
 
     render() {
         return (
             <View>
+                <View>
 
+                </View>
             </View>
         );
     }
