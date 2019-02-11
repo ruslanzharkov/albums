@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View} from 'react-native';
 
-class AddPostScreen {
+class AddPostScreen extends Component{
     constructor(props) {
         super(props);
+
         this.state = {
             title: '',
             content: ''
