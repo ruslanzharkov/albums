@@ -34,7 +34,7 @@ const styles = {
     },
     titleInput: {
         height: 40,
-        borderColor: '#000',
+        borderColor: '#ededee',
         borderWidth: 1,
         borderRadius: 10,
     }

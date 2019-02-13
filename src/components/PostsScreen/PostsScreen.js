@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {Text, View, ActivityIndicator, TouchableOpacity} from 'react-native';
 import _ from 'lodash';
-import { db } from '../../config/db';
+import {db} from '../../config/db';
 
 class PostsScreen extends Component {
     static navigationOptions = {
@@ -27,7 +27,7 @@ class PostsScreen extends Component {
         if (_.isEmpty(this.props.posts))
             return (
                 <View style={styles.activity}>
-                    <ActivityIndicator size="large" color="#0000ff" />
+                    <ActivityIndicator size="large" color="#0000ff"/>
                 </View>
             );
 
@@ -62,6 +62,8 @@ class PostsScreen extends Component {
                             </Text>
                         </View>
                     </View>
+
+                    <View style={styles.separateLine}/>
                 </TouchableOpacity>
             </View>
         );
@@ -87,15 +89,6 @@ const styles = {
         backgroundColor: '#fff',
         borderRadius: 10,
         padding: 10,
-        shadowColor: '#000000',
-        shadowOffset: {
-            width: 0,
-            height: 1
-        },
-        shadowRadius: 3,
-        shadowOpacity: 0.3,
-        marginLeft: 15,
-        marginRight: 15,
         marginTop: 15,
     },
     innerPostContainer: {
@@ -118,5 +111,9 @@ const styles = {
     titleContent: {
         color: '#ada6a6',
         marginRight: 4
+    },
+    separateLine: {
+        height: 1,
+        backgroundColor: '#ededee'
     }
 };
