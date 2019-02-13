@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, TextInput} from 'react-native';
 
 class AddPostScreen extends Component{
     constructor(props) {
@@ -15,12 +15,17 @@ class AddPostScreen extends Component{
         return (
             <View>
                 <View>
-
+                    <TextInput/>
+                    <TextInput/>
                 </View>
             </View>
         );
     }
 
 }
+
+const styles = {
+
+};
 
 export default AddPostScreen;

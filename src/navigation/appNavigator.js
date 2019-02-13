@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PostContainer from '../containers/PostContainer';
+import AddPostContainer from '../containers/AddPostContainer';
 import PostDetailsContainer from '../containers/PostDetailsContainer';
 
 class IconWithBadge extends React.Component {
@@ -11,7 +12,7 @@ class IconWithBadge extends React.Component {
         return (
             <View style={{ width: 24, height: 24, margin: 5 }}>
                 <Ionicons name={name} size={size} color={color} />
-                
+
             </View>
         );
     }
@@ -23,16 +24,16 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     let iconName;
     if (routeName === 'Home') {
         iconName = 'ios-home';
-    } else if (routeName === 'Settings') {
-        iconName = 'ios-settings';
+    } else if (routeName === 'AddPost') {
+        iconName = 'ios-filing';
     }
-    
+
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
 const AppBottomNavigator = createBottomTabNavigator({
     Home: PostContainer,
-    Settings: PostContainer,
+    AddPost: AddPostContainer,
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
@@ -48,7 +49,7 @@ export default createStackNavigator(
     {
         Home: AppBottomNavigator,
         Details: PostDetailsContainer,
-    }, 
+    },
     {
         defaultNavigationOptions: {
             title: 'Albums',
