@@ -19,6 +19,16 @@ class AddPostScreen extends Component {
                         style={styles.titleInput}
                     />
                 </View>
+
+
+                <TextInput
+                    style={styles.contentInput}
+                    editable={true}
+                    maxLength={1000}
+                    multiline={true}
+                    numberOfLines={14}
+                />
+
             </View>
         );
     }
@@ -37,6 +47,13 @@ const styles = {
         borderColor: '#ededee',
         borderWidth: 1,
         borderRadius: 10,
+    },
+    contentInput: {
+        height: 300,
+        borderColor: '#ededee',
+        borderWidth: 1,
+        borderRadius: 10,
+        marginTop: 20
     }
 };
 
