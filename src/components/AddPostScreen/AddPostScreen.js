@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, TextInput} from 'react-native';
 
-class AddPostScreen extends Component{
+class AddPostScreen extends Component {
     constructor(props) {
         super(props);
 
@@ -13,10 +13,11 @@ class AddPostScreen extends Component{
 
     render() {
         return (
-            <View>
-                <View>
-                    <TextInput/>
-                    <TextInput/>
+            <View style={styles.container}>
+                <View style={styles.titleInputContainer}>
+                    <TextInput
+                        style={styles.titleInput}
+                    />
                 </View>
             </View>
         );
@@ -25,7 +26,18 @@ class AddPostScreen extends Component{
 }
 
 const styles = {
-
+    container: {
+        marginHorizontal: 10
+    },
+    titleInputContainer: {
+        marginTop: 10,
+    },
+    titleInput: {
+        height: 40,
+        borderColor: '#000',
+        borderWidth: 1,
+        borderRadius: 10,
+    }
 };
 
 export default AddPostScreen;
