@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text} from 'react-native';
+import {View, TextInput, Text, Button} from 'react-native';
 
 class AddPostScreen extends Component {
     constructor(props) {
@@ -7,9 +7,19 @@ class AddPostScreen extends Component {
 
         this.state = {
             title: '',
+            author: '',
             content: ''
         };
     }
+
+    addPost = () => {
+        let title = this.state.title;
+        let author = this.state.author;
+        let content = this.state.content;
+        if (title && author && content) {
+
+        }
+    };
 
     render() {
         return (
@@ -18,6 +28,7 @@ class AddPostScreen extends Component {
                     <Text>Post title</Text>
                     <TextInput
                         style={styles.titleInput}
+                        placeholder={'Title of post'}
                     />
                 </View>
 
@@ -37,6 +48,9 @@ class AddPostScreen extends Component {
                         multiline={true}
                         numberOfLines={14}
                     />
+
+                    <Button title={'Add Post'} onPress={this.addPost}/>
+
                 </View>
 
             </View>

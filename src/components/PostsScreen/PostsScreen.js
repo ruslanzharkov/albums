@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, ActivityIndicator, TouchableOpacity} from 'react-native';
 import _ from 'lodash';
-import {db} from '../../config/db';
 
 class PostsScreen extends Component {
     static navigationOptions = {
@@ -10,12 +9,6 @@ class PostsScreen extends Component {
 
     componentDidMount() {
         this.props.getPosts();
-        // db.ref('posts/1').set({
-        //     author: 'Zharkov Ruslan',
-        //     title: 'About React Native',
-        //     content: ''
-        // }).then(() => console.log('success!'))
-        // .catch((err) => console.log(err));
     }
 
     goDetailsScreen = (postDetailInfo) => {
