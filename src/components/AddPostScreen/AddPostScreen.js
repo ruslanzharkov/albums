@@ -44,13 +44,13 @@ const styles = {
     },
     titleInput: {
         height: 40,
-        borderColor: '#ededee',
+        borderColor: '#757575',
         borderWidth: 1,
         borderRadius: 10,
     },
     contentInput: {
         height: 300,
-        borderColor: '#ededee',
+        borderColor: '#757575',
         borderWidth: 1,
         borderRadius: 10,
         marginTop: 20
