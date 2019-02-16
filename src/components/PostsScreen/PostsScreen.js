@@ -38,18 +38,18 @@ class PostsScreen extends Component {
                     onPress={() => this.goDetailsScreen(post)}
                 >
                     <View>
-                        <Text>
-                            {post.author}
+                        <Text style={styles.author}>
+                            {post.title}
                         </Text>
                     </View>
 
                     <View style={styles.aboutContainer}>
                         <View style={styles.titleContainer}>
                             <Text style={styles.titleContent}>
-                                Title:
+                                Author:
                             </Text>
                             <Text>
-                                {post.title}
+                                {post.author}
                             </Text>
                         </View>
 
@@ -115,5 +115,8 @@ const styles = {
     separateLine: {
         height: 1,
         backgroundColor: '#ededee'
+    },
+    author: {
+        fontSize: 17
     }
 };
