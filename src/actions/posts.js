@@ -38,10 +38,10 @@ export const addNewPost = ({title, author, content, date}) => {
     return dispatch => {
         // TODO: add loading dispatch for user
         db.ref('posts/1').set({
-            ...author,
-            ...title,
-            ...content,
-            ...date
+            author,
+            title,
+            content,
+            date
         })
             .then(() => {
                 dispatch({

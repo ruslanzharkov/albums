@@ -7,7 +7,9 @@ import { actionCreators } from '../../actions';
 class PostContainer extends Component {
     render() {
         return (
-            <AddPostScreen/>
+            <AddPostScreen
+                addNewPost={this.props.addNewPost}
+            />
         );
     }
 }
@@ -19,6 +21,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     const actions = {
+        addNewPost: actionCreators.addNewPost
     };
     return bindActionCreators(actions, dispatch);
 }

@@ -16,9 +16,21 @@ class AddPostScreen extends Component {
         let title = this.state.title;
         let author = this.state.author;
         let content = this.state.content;
-        if (title && author && content) {
+        let data = new Date();
 
-        }
+        this.props.addNewPost({title, author, content, data});
+    };
+
+    titleChangeHandler = (title) => {
+        this.setState({title});
+    };
+
+    authorChangeHandler = (author) => {
+        this.setState({author});
+    };
+
+    contentChangeHandler = (content) => {
+        this.setState({content});
     };
 
     render() {
@@ -28,7 +40,7 @@ class AddPostScreen extends Component {
                     <Text>Post title</Text>
                     <TextInput
                         style={styles.titleInput}
-                        placeholder={'Title of post'}
+                        onChange={this.titleChangeHandler}
                     />
                 </View>
 
@@ -36,6 +48,7 @@ class AddPostScreen extends Component {
                     <Text>Post author</Text>
                     <TextInput
                         style={styles.titleInput}
+                        onChange={this.authorChangeHandler}
                     />
                 </View>
 
@@ -47,6 +60,7 @@ class AddPostScreen extends Component {
                         maxLength={1000}
                         multiline={true}
                         numberOfLines={14}
+                        onChange={this.contentChangeHandler}
                     />
 
                     <Button title={'Add Post'} onPress={this.addPost}/>
