@@ -4,7 +4,7 @@ import {db} from '../config/db';
 function setLoading(dispatch) {
     dispatch({
         type: actionTypes.SET_LOADING
-    })
+    });
 }
 
 export const getPosts = () => {
@@ -34,26 +34,25 @@ export const getPostDetails = (postDetails) => {
     };
 };
 
-export const addNewPost = ({title, author, content, date}) => {
+export const addNewPost = ({ title, author, content, formattedDate, postNumber }) => {
     return dispatch => {
-        // TODO: add loading dispatch for user
-        db.ref('posts/1').set({
+        db.ref(`posts/${postNumber}`).set({
             author,
             title,
             content,
             date
         })
-            .then(() => {
-                dispatch({
-                    type: actionTypes.ADD_POST,
-                    payload: 'Post success added!'
-                });
-            })
-            .catch((err) => {
-                dispatch({
-                    type: actionTypes.ADD_POST_ERROR,
-                    payload: 'Error, please try again later'
-                });
+        .then(() => {
+            dispatch({
+                type: actionTypes.ADD_POST,
+                payload: 'Post success added!'
             });
+        })
+        .catch(() => {
+            dispatch({
+                type: actionTypes.ADD_POST_ERROR,
+                payload: 'Error, please try again later'
+            });
+        });
     };
 };

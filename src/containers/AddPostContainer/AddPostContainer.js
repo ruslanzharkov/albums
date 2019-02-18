@@ -9,6 +9,7 @@ class PostContainer extends Component {
         return (
             <AddPostScreen
                 addNewPost={this.props.addNewPost}
+                posts={this.props.posts}
             />
         );
     }
@@ -16,6 +17,7 @@ class PostContainer extends Component {
 
 function mapStateToProps(state) {
     return {
+        posts: state.posts
     };
 }
 

@@ -13,24 +13,26 @@ class AddPostScreen extends Component {
     }
 
     addPost = () => {
-        let title = this.state.title;
-        let author = this.state.author;
-        let content = this.state.content;
-        let data = new Date();
+        const title = this.state.title;
+        const author = this.state.author;
+        const content = this.state.content;
+        const date = new Date();
+        const postNumber = this.props.posts.length + 1;
+        const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
-        this.props.addNewPost({title, author, content, data});
+        this.props.addNewPost({ title, author, content, formattedDate, postNumber });
     };
 
     titleChangeHandler = (title) => {
-        this.setState({title});
+        this.setState({ title });
     };
 
     authorChangeHandler = (author) => {
-        this.setState({author});
+        this.setState({ author });
     };
 
     contentChangeHandler = (content) => {
-        this.setState({content});
+        this.setState({ content });
     };
 
     render() {
@@ -40,7 +42,7 @@ class AddPostScreen extends Component {
                     <Text>Post title</Text>
                     <TextInput
                         style={styles.titleInput}
-                        onChange={this.titleChangeHandler}
+                        onChangeText={this.titleChangeHandler}
                     />
                 </View>
 
@@ -48,7 +50,7 @@ class AddPostScreen extends Component {
                     <Text>Post author</Text>
                     <TextInput
                         style={styles.titleInput}
-                        onChange={this.authorChangeHandler}
+                        onChangeText={this.authorChangeHandler}
                     />
                 </View>
 
@@ -60,7 +62,7 @@ class AddPostScreen extends Component {
                         maxLength={1000}
                         multiline={true}
                         numberOfLines={14}
-                        onChange={this.contentChangeHandler}
+                        onChangeText={this.contentChangeHandler}
                     />
 
                     <Button title={'Add Post'} onPress={this.addPost}/>
