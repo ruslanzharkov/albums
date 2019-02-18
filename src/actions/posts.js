@@ -1,5 +1,5 @@
 import * as actionTypes from '../constants/actions';
-import {db} from '../config/db';
+import { db } from '../config/db';
 
 function setLoading(dispatch) {
     dispatch({
@@ -29,18 +29,20 @@ export const getPostDetails = (postDetails) => {
     return dispatch => {
         dispatch({
             type: actionTypes.GET_POST_DETAILS,
-            payload: {...postDetails}
+            payload: { ...postDetails }
         });
     };
 };
 
 export const addNewPost = ({ title, author, content, formattedDate, postNumber }) => {
+
+    //TODO: try to refactor on async/await construction
     return dispatch => {
         db.ref(`posts/${postNumber}`).set({
             author,
             title,
             content,
-            date
+            formattedDate
         })
         .then(() => {
             dispatch({

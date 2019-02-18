@@ -65,7 +65,10 @@ class AddPostScreen extends Component {
                         onChangeText={this.contentChangeHandler}
                     />
 
-                    <Button title={'Add Post'} onPress={this.addPost}/>
+                    <Button
+                        title={'Add Post'}
+                        onPress={this.addPost}
+                    />
 
                 </View>
 
