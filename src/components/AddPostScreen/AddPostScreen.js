@@ -8,7 +8,8 @@ class AddPostScreen extends Component {
         this.state = {
             title: '',
             author: '',
-            content: ''
+            content: '',
+            emptyTitle: false,
         };
     }
 
@@ -16,6 +17,12 @@ class AddPostScreen extends Component {
         const title = this.state.title;
         const author = this.state.author;
         const content = this.state.content;
+
+        if (!title) {
+            this.setState({ emptyTitle: true });
+            return;
+        }
+
         const date = new Date();
         const postNumber = this.props.posts.length + 1;
         const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -24,7 +31,7 @@ class AddPostScreen extends Component {
     };
 
     titleChangeHandler = (title) => {
-        this.setState({ title });
+        this.setState({ title, emptyTitle: false });
     };
 
     authorChangeHandler = (author) => {
@@ -41,7 +48,7 @@ class AddPostScreen extends Component {
                 <View style={styles.titleInputContainer}>
                     <Text>Post title</Text>
                     <TextInput
-                        style={styles.titleInput}
+                        style={[styles.titleInput, this.state.emptyTitle ? styles.errorTitleInput : null]}
                         onChangeText={this.titleChangeHandler}
                     />
                 </View>
@@ -84,6 +91,10 @@ const styles = {
     },
     titleInputContainer: {
         marginTop: 10,
+    },
+    errorTitleInput: {
+        borderColor: '#f23a3a',
+        borderWidth: 1,
     },
     titleInput: {
         paddingLeft: 8,
