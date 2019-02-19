@@ -8,7 +8,7 @@ class PostsScreen extends Component {
         title: 'Home',
     };
 
-    _keyExtractor = (item, index) => item.id;
+    _keyExtractor = (item, index) => `${index}`;
 
     componentDidMount() {
         this.props.getPosts();
