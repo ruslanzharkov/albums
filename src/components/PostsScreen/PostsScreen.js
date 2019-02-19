@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
-import {Text, View, ActivityIndicator, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, ActivityIndicator, FlatList } from 'react-native';
 import _ from 'lodash';
+import Post from './PostItem';
 
 class PostsScreen extends Component {
     static navigationOptions = {
         title: 'Home',
     };
+
+    _keyExtractor = (item, index) => item.id;
 
     componentDidMount() {
         this.props.getPosts();
@@ -16,49 +19,31 @@ class PostsScreen extends Component {
         this.props.navigation.navigate('Details');
     };
 
+    _renderItem = ({item}) => (
+        <Post
+            onPress={this.goDetailsScreen}
+            post={item}
+        />
+    );
+
     renderPosts = () => {
         if (_.isEmpty(this.props.posts))
             return (
                 <View style={styles.activity}>
-                    <ActivityIndicator size="large" color="#0000ff"/>
+                    <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             );
 
+        return (
+            <FlatList
+                data={this.props.posts}
+                keyExtractor={this._keyExtractor}
+                renderItem={this._renderItem}
+            />
+        );
+
         return this.props.posts.map((post, index) =>
-            <View key={index} style={styles.postContainer}>
-                <TouchableOpacity
-                    style={styles.innerPostContainer}
-                    onPress={() => this.goDetailsScreen(post)}
-                >
-                    <View>
-                        <Text style={styles.author}>
-                            {post.title}
-                        </Text>
-                    </View>
-
-                    <View style={styles.aboutContainer}>
-                        <View style={styles.titleContainer}>
-                            <Text style={styles.titleContent}>
-                                Author:
-                            </Text>
-                            <Text>
-                                {post.author}
-                            </Text>
-                        </View>
-
-                        <View style={styles.titleContainer}>
-                            <Text style={styles.titleContent}>
-                                Date:
-                            </Text>
-                            <Text>
-                                {'10/01/19'}
-                            </Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.separateLine}/>
-                </TouchableOpacity>
-            </View>
+            <Post key={index} post={post} onPress={this.goDetailsScreen} />
         );
     };
 
