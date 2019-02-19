@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class PostDetailsScreen extends Component {
@@ -26,17 +26,20 @@ class PostDetailsScreen extends Component {
 
     render() {
         return (
-            <View>
+            <ScrollView style={styles.scrollView}>
                 <View style={[styles.containerContent, styles.eyeIcon]}>
                     <Ionicons name={'ios-eye'} size={20} color={'black'}/>
                 </View>
                 {this.renderContent()}
-            </View>
+            </ScrollView>
         );
     }
 }
 
 const styles = {
+    scrollView: {
+      marginBottom: 20
+    },
     eyeIcon: {
         marginTop: 5,
     },
