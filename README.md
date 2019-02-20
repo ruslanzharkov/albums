@@ -17,7 +17,7 @@ Include logo/demo screenshot etc.
 
 <b>Built with</b>
 - [React-Native](https://facebook.github.io/react-native/)
-- [react-native-fireabse](https://rnfirebase.io/)
+- [react-native-firebase](https://rnfirebase.io/)
 
 ## Features
 App store data in Firebase. It\`s simple to use in development and fast for read/write data
