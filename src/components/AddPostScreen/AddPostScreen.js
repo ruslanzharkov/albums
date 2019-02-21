@@ -10,6 +10,8 @@ class AddPostScreen extends Component {
             author: '',
             content: '',
             emptyTitle: false,
+            emptyAuthor: false,
+            emptyContent: false,
         };
     }
 
@@ -22,6 +24,18 @@ class AddPostScreen extends Component {
             this.setState({ emptyTitle: true });
             return;
         }
+
+        if (!author) {
+            this.setState({ emptyAuthor: true });
+            return;
+        }
+
+        if (!content || content.length < 50) {
+            this.setState({ emptyContent: true });
+            return;
+        }
+
+
 
         const date = new Date();
         const postNumber = this.props.posts.length + 1;
@@ -56,7 +70,7 @@ class AddPostScreen extends Component {
                 <View style={styles.titleInputContainer}>
                     <Text>Post author</Text>
                     <TextInput
-                        style={styles.titleInput}
+                        style={[styles.titleInput, this.state.emptyTitle ? styles.errorTitleInput : null]}
                         onChangeText={this.authorChangeHandler}
                     />
                 </View>
@@ -64,9 +78,9 @@ class AddPostScreen extends Component {
                 <View style={styles.titleInputContainer}>
                     <Text>Content of post</Text>
                     <TextInput
-                        style={styles.contentInput}
+                        style={[styles.contentInput, this.state.emptyContent ? styles.errorTitleInput : null]}
                         editable={true}
-                        maxLength={1000}
+                        maxLength={4000}
                         multiline={true}
                         numberOfLines={14}
                         onChangeText={this.contentChangeHandler}
