@@ -97,9 +97,7 @@ class AddPostScreen extends Component {
                         title={'Add Post'}
                         onPress={this.addPost}
                     />
-
                 </View>
-
             </View>
         );
     }
