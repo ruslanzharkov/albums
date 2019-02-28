@@ -16,6 +16,7 @@ import PostContainer from '../containers/PostContainer';
 import AddPostContainer from '../containers/AddPostContainer';
 import PostDetailsContainer from '../containers/PostDetailsContainer';
 import SignUpContainer from '../containers/SignUpContainer';
+import SignInContainer from '../containers/SignInContainer';
 
 class IconWithBadge extends React.Component {
     render() {
@@ -35,8 +36,8 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     let iconName;
     if (routeName === 'Home') {
         iconName = 'ios-home';
-    } else if (routeName === 'AddPost') {
-        iconName = 'ios-filing';
+    } else if (routeName === 'SignIn') {
+        iconName = 'ios-people';
     }
 
     return <IconComponent name={iconName} size={25} color={tintColor} />;
@@ -59,7 +60,7 @@ const AppBottomNavigatorHome = createBottomTabNavigator({
 
 const AppBottomNavigatorAuth = createBottomTabNavigator({
     Home: PostContainer,
-    SignUp: SignUpContainer,
+    SignIn: SignInContainer
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
@@ -93,6 +94,7 @@ const AuthStack = createStackNavigator(
     {
         Home: AppBottomNavigatorAuth,
         Details: PostDetailsContainer,
+        SignUp: SignUpContainer
     },
     {
         defaultNavigationOptions: {
@@ -113,16 +115,12 @@ class AuthLoadingScreen extends React.Component {
         this._bootstrapAsync();
     }
 
-    // Fetch the token from storage then navigate to our appropriate place
     _bootstrapAsync = async () => {
         const userToken = await AsyncStorage.getItem('userToken');
 
-        // This will switch to the App screen or Auth screen and this loading
-        // screen will be unmounted and thrown away.
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     };
 
-    // Render any loading content that you like here
     render() {
         return (
             <View style={styles.container}>
