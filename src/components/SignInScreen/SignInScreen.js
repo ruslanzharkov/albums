@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 
 class SignInScreen extends Component {
+    static navigationOptions = {
+        title: 'Please sign in',
+    };
+
     constructor(props) {
         super(props);
     }
@@ -14,10 +18,10 @@ class SignInScreen extends Component {
     render() {
         return (
             <View>
-                <View >
+                <View>
                     <Text>SignIn Screen</Text>
                 </View>
-                <TouchableOpacity style={{backgroundColor: "red", padding: 20}} onPress={this._goToSignUp}>
+                <TouchableOpacity style={styles.signUpButton} onPress={this._goToSignUp}>
                     <Text>SignUp</Text>
                 </TouchableOpacity>
             </View>
@@ -25,5 +29,12 @@ class SignInScreen extends Component {
     }
 
 };
+
+const styles = StyleSheet.create({
+    signUpButton: {
+        backgroundColor: "red",
+        padding: 20
+    }
+});
 
 export default SignInScreen;
