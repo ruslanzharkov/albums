@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../actions';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {actionCreators} from '../../actions';
 import SignInScreen from '../../components/SignInScreen';
 
 class SignInContainer extends Component {
