@@ -18,6 +18,7 @@ class SignInScreen extends Component {
                     <Text>Sign In to App</Text>
                     <Input
                         titleInput={'Email'}
+                        style={styles.input}
                     />
                     <Input
                         titleInput={'Password'}
@@ -48,6 +49,10 @@ const styles = StyleSheet.create({
     },
     signUpText: {
         color: '#ed5e42'
+    },
+    input: {
+        width: 300,
+        height: 30
     }
 });
 
