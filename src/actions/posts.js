@@ -10,7 +10,8 @@ function setLoading(dispatch) {
 export const getPosts = () => {
     return dispatch => {
         db.ref('posts').once('value', (data) => {
-            let posts = [], fireData = data.toJSON();
+            const posts = [];
+            const fireData = data.toJSON();
 
             for (let i = 0; i < fireData.length; i++) {
                 if (fireData[i] !== null)
@@ -19,7 +20,7 @@ export const getPosts = () => {
 
             dispatch({
                 type: actionTypes.GET_POSTS,
-                payload: posts
+                payload: [...posts]
             });
         });
     };

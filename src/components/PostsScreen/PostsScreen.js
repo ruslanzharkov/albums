@@ -4,15 +4,15 @@ import _ from 'lodash';
 import Post from './PostItem';
 
 class PostsScreen extends Component {
-    static navigationOptions = {
-        title: 'Home',
-    };
+    constructor(props) {
+        super(props);
+    }
 
-    _keyExtractor = (item, index) => `${index}`;
-
-    componentDidMount() {
+    componentDidMount(): void {
         this.props.getPosts();
     }
+
+    _keyExtractor = (item, index) => `${index}`;
 
     goDetailsScreen = (postDetailInfo) => {
         this.props.getPostDetails(postDetailInfo);
@@ -27,12 +27,13 @@ class PostsScreen extends Component {
     );
 
     renderPosts = () => {
-        if (_.isEmpty(this.props.posts))
+        if (_.isEmpty(this.props.posts)) {
             return (
                 <View style={styles.activity}>
                     <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             );
+        }
 
         return (
             <FlatList
@@ -40,10 +41,6 @@ class PostsScreen extends Component {
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
             />
-        );
-
-        return this.props.posts.map((post, index) =>
-            <Post key={index} post={post} onPress={this.goDetailsScreen} />
         );
     };
 

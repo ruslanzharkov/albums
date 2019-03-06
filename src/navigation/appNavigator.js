@@ -65,7 +65,6 @@ const AppBottomNavigatorAuth = createBottomTabNavigator({
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
             getTabBarIcon(navigation, focused, tintColor),
-        // title: navigation.params.s
     }),
     tabBarOptions: {
         activeTintColor: '#ed5e42',
