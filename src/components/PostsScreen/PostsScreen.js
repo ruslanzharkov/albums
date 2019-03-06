@@ -4,11 +4,7 @@ import _ from 'lodash';
 import Post from './PostItem';
 
 class PostsScreen extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount(): void {
+    componentDidMount() {
         this.props.getPosts();
     }
 
