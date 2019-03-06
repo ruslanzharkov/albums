@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-
+import Input from '../common/Input';
 
 class SignInScreen extends Component {
     constructor(props) {
@@ -16,6 +16,12 @@ class SignInScreen extends Component {
             <View style={styles.mainContainer}>
                 <View style={styles.signInContainer}>
                     <Text>Sign In to App</Text>
+                    <Input
+                        titleInput={'Email'}
+                    />
+                    <Input
+                        titleInput={'Password'}
+                    />
                 </View>
                 <TouchableOpacity style={styles.signUpButton} onPress={this._goToSignUp}>
                     <Text style={styles.signUpText}>Not have an account? Sign Up</Text>
