@@ -22,7 +22,8 @@ export default Input = (props) => {
 
 const styles = StyleSheet.create({
    inputWrapper: {
-       borderBottomColor: '#757575',
+       marginBottom: 20,
+       borderBottomColor: '#d8d8d8',
        borderBottomWidth: 1,
    }
 });

@@ -15,13 +15,16 @@ class SignInScreen extends Component {
         return (
             <View style={styles.mainContainer}>
                 <View style={styles.signInContainer}>
-                    <Text>Sign In to App</Text>
+                    <View style={styles.signInTextContainer}>
+                        <Text style={styles.signInText}>Sign In</Text>
+                    </View>
                     <Input
-                        titleInput={'Email'}
+                        placeholder={'Email'}
                         style={styles.input}
                     />
                     <Input
-                        titleInput={'Password'}
+                        placeholder={'Password'}
+                        style={styles.input}
                     />
                 </View>
                 <TouchableOpacity style={styles.signUpButton} onPress={this._goToSignUp}>
@@ -46,6 +49,14 @@ const styles = StyleSheet.create({
         color: '#fff',
         borderRadius: 10,
         padding: 20
+    },
+    signInTextContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    signInText: {
+        fontSize: 30
     },
     signUpText: {
         color: '#ed5e42'
