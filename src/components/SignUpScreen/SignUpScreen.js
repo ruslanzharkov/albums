@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../common/Input';
-import firebase from "react-native-firebase";
+import Button from '../common/Button';
 
 class SignUpScreen extends Component {
     static navigationOptions = {
@@ -29,13 +29,16 @@ class SignUpScreen extends Component {
                         placeholder={'Password'}
                         style={styles.input}
                     />
-
+                    <Button
+                        icon={<Ionicons name={'ios-mail'} size={20} color={'#fff'} />}
+                        title={'Create account'}
+                    />
                 </View>
             </View>
         );
     }
 
-};
+}
 
 const styles = StyleSheet.create({
     mainContainer: {
