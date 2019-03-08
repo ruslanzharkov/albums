@@ -86,6 +86,7 @@ const AppStack = createStackNavigator(
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            title: 'Albums'
           },
     }
 );
@@ -105,6 +106,7 @@ const AuthStack = createStackNavigator(
             headerTitleStyle: {
                 fontWeight: 'bold',
             },
+            title: 'Albums'
         },
     }
 );
