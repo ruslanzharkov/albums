@@ -1,55 +1,71 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Input from '../common/Input';
+import firebase from "react-native-firebase";
 
 class SignUpScreen extends Component {
     static navigationOptions = {
         title: 'Hello!',
     };
 
-    renderContent = () => {
-        return (
-            <View style={styles.containerContent}>
-               <Text>Sign Up screen</Text>
-            </View>
-        );
+
+    signUp = async () => {
 
     };
 
     render() {
         return (
-            <ScrollView style={styles.scrollView}>
-                {this.renderContent()}
-            </ScrollView>
+            <View style={styles.mainContainer}>
+                <View style={styles.signInContainer}>
+                    <View style={styles.signInTextContainer}>
+                        <Text style={styles.signInText}>Sign Up</Text>
+                    </View>
+                    <Input
+                        placeholder={'Email'}
+                        style={styles.input}
+                    />
+                    <Input
+                        placeholder={'Password'}
+                        style={styles.input}
+                    />
+
+                </View>
+            </View>
         );
     }
-}
 
-const styles = {
-    scrollView: {
-        marginBottom: 20
-    },
-    eyeIcon: {
-        marginTop: 5,
-    },
-    title: {
-        fontSize: 26,
-        marginBottom: 3,
-    },
-    author: {
-        marginTop: 5,
-        paddingBottom: 5,
-        fontSize: 12,
-        opacity: 0.7,
-        textTransform: 'uppercase'
-    },
-    postContent: {
-        lineHeight: 20,
-    },
-    containerContent: {
-        marginTop: 3,
-        marginHorizontal: 15
-    }
 };
+
+const styles = StyleSheet.create({
+    mainContainer: {
+        marginTop: '50%',
+        flex: 1,
+        alignItems: 'center'
+    },
+    signInContainer: {
+        marginBottom: 20,
+    },
+    signUpButton: {
+        color: '#fff',
+        borderRadius: 10,
+        padding: 20
+    },
+    signInTextContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    signInText: {
+        fontSize: 30
+    },
+    signUpText: {
+        color: '#ed5e42'
+    },
+    input: {
+        width: 300,
+        height: 30
+    }
+});
 
 export default SignUpScreen;

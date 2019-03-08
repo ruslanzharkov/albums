@@ -1,5 +1,13 @@
+// POSTS ACTIONS
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST_DETAILS = 'GET_POST_DETAILS';
 export const ADD_POST = 'ADD_POST';
 export const ADD_POST_ERROR = 'ADD_POST_ERROR';
+
+// SYSTEM ACTIONS
 export const SET_LOADING = 'SET_LOADING';
+
+
+// USERS ACTIONS
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';

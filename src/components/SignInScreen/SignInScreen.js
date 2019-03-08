@@ -1,14 +1,28 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import firebase from 'react-native-firebase';
 import Input from '../common/Input';
 
 class SignInScreen extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            login: '',
+            password: ''
+        };
     }
+
 
     _goToSignUp = () => {
         this.props.navigation.navigate('SignUp');
+    };
+
+    onChangeLogin = () => {
+
+    };
+
+    onChangePassword = () => {
+
     };
 
     render() {
@@ -26,6 +40,7 @@ class SignInScreen extends Component {
                         placeholder={'Password'}
                         style={styles.input}
                     />
+
                 </View>
                 <TouchableOpacity style={styles.signUpButton} onPress={this._goToSignUp}>
                     <Text style={styles.signUpText}>Not have an account? Sign Up</Text>
