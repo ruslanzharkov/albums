@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class Input extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showIconFocus: false
+        };
+    }
+
 
     renderEyeSecureIcon = () => {
         return (
             <Ionicons
-                style={styles.eyeIcon}
                 name={'ios-eye'}
                 size={20}
                 color="#000"
@@ -20,7 +26,6 @@ export default class Input extends Component {
     renderEyeSecureOffIcon = () => {
         return (
             <Ionicons
-                style={styles.eyeIcon}
                 name={'ios-eye-off'}
                 size={20}
                 color="#000"
@@ -30,13 +35,23 @@ export default class Input extends Component {
     };
 
     renderEyeIcons = () => {
-        if (this.props.isSecure) {
-            return this.renderEyeSecureIcon();
-        }
+       if (this.state.showIconFocus) {
+           if (this.props.isSecure) {
+               return this.renderEyeSecureIcon();
+           }
 
-        if (this.props.passwordType) {
-            return this.renderEyeSecureOffIcon();
-        }
+           if (this.props.passwordType) {
+               return this.renderEyeSecureOffIcon();
+           }
+       }
+    };
+
+    onFocus = () => {
+        this.setState({showIconFocus: true});
+    };
+
+    onBlur = () => {
+        this.setState({showIconFocus: false});
     };
 
     render() {
@@ -44,9 +59,7 @@ export default class Input extends Component {
             style,
             onChangeText,
             placeholder,
-            isSecure,
-            passwordType,
-            iconPress
+            isSecure
         } = this.props;
 
         return (
@@ -56,6 +69,8 @@ export default class Input extends Component {
                     secureTextEntry={isSecure}
                     placeholder={placeholder}
                     onChangeText={onChangeText}
+                    onBlur={this.onBlur}
+                    onFocus={this.onFocus}
                 />
                 {this.renderEyeIcons()}
             </View>
@@ -74,6 +89,7 @@ const styles = StyleSheet.create({
        backgroundColor: '#fff',
    },
     eyeIcon: {
+       width: 20
     },
     input: {
         backgroundColor: '#fff',
