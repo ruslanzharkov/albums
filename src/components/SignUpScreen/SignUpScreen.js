@@ -30,7 +30,7 @@ class SignUpScreen extends Component {
                         style={styles.input}
                     />
                     <Button
-                        icon={<Ionicons name={'ios-mail'} size={20} color={'#fff'} />}
+                        icon={<Ionicons name={'ios-rocket'} size={25} color={'#fff'} />}
                         title={'Create account'}
                     />
                 </View>

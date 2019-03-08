@@ -4,11 +4,12 @@ import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 export default Button = (props) => {
     const {
         icon,
-        title
+        title,
+        style
     } = props;
 
     return (
-        <TouchableOpacity style={styles.signUpTouchable}>
+        <TouchableOpacity style={[styles.signUpTouchable, style]}>
             <Text style={styles.touchableText}>{title}</Text>
             <View style={styles.icon}>
                 {icon}
@@ -20,6 +21,7 @@ export default Button = (props) => {
 const styles = StyleSheet.create({
     touchableText: {
         color: '#ffffff',
+        fontSize: 16,
         padding: 15,
     },
     signUpTouchable: {
