@@ -9,13 +9,21 @@ class SignInScreen extends Component {
         super(props);
         this.state = {
             login: '',
-            password: ''
+            password: '',
+            showPassword: false,
+            isSecure: true
         };
     }
 
-
     _goToSignUp = () => {
         this.props.navigation.navigate('SignUp');
+    };
+
+    showPassword = () => {
+        this.setState({
+            showPassword: !this.state.showPassword,
+            isSecure: !this.state.isSecure,
+        });
     };
 
     onChangeLogin = () => {
@@ -39,7 +47,10 @@ class SignInScreen extends Component {
                     />
                     <Input
                         placeholder={'Password'}
-                        style={styles.input}
+                        style={styles.inputPassword}
+                        isSecure={this.state.isSecure}
+                        passwordType={this.state.showPassword}
+                        iconPress={this.showPassword}
                     />
 
                 </View>
@@ -81,6 +92,10 @@ const styles = StyleSheet.create({
     },
     input: {
         width: 300,
+        height: 30
+    },
+    inputPassword: {
+        width: 280,
         height: 30
     },
     button: {
