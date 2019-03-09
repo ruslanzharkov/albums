@@ -54,6 +54,10 @@ export default class Input extends Component {
         this.setState({showIconFocus: false});
     };
 
+    emptySpace = () => {
+        return this.props.isSecure && !this.state.showIconFocus;
+    };
+
     render() {
         const {
             style,
@@ -65,7 +69,7 @@ export default class Input extends Component {
         return (
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, style]}
+                    style={[styles.input, style, this.emptySpace() ? styles.eyeIcon : null]}
                     secureTextEntry={isSecure}
                     placeholder={placeholder}
                     onChangeText={onChangeText}
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
        backgroundColor: '#fff',
    },
     eyeIcon: {
-       width: 20
+        marginLeft: -18,
     },
     input: {
         backgroundColor: '#fff',
