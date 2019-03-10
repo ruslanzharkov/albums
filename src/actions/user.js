@@ -20,7 +20,6 @@ export const signUp = ({ email, password }) => {
 
         await AsyncStorage.setItem('userToken', password);
 
-        console.log('after');
         dispatch({
             type: actionTypes.SIGN_UP_SUCCESS,
             payload: ''

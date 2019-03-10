@@ -20,7 +20,6 @@ class SignUpScreen extends Component {
     };
 
     onChangePassword = (password) => {
-        console.log(password)
         this.setState({ password });
     };
 

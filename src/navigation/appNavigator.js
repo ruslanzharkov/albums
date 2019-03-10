@@ -34,18 +34,21 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
     const IconComponent = Ionicons;
     let iconName;
-    if (routeName === 'Home') {
+    if (routeName === 'Home')
         iconName = 'ios-home';
-    } else if (routeName === 'SignIn') {
+
+    if (routeName === 'SignIn')
         iconName = 'ios-people';
-    }
+
+    if (routeName === 'Add Post')
+        iconName = 'ios-list-box';
 
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
 const AppBottomNavigatorHome = createBottomTabNavigator({
     Home: PostContainer,
-    AddPost: AddPostContainer,
+    'Add Post': AddPostContainer,
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
