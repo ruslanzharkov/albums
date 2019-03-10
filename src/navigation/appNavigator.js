@@ -17,18 +17,7 @@ import AddPostContainer from '../containers/AddPostContainer';
 import PostDetailsContainer from '../containers/PostDetailsContainer';
 import SignUpContainer from '../containers/SignUpContainer';
 import SignInContainer from '../containers/SignInContainer';
-
-class IconWithBadge extends React.Component {
-    render() {
-        const { name, color, size } = this.props;
-        return (
-            <View style={{ width: 24, height: 24, margin: 5 }}>
-                <Ionicons name={name} size={size} color={color} />
-
-            </View>
-        );
-    }
-}
+import ProfileContainer from '../containers/ProfileContainer';
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
@@ -43,12 +32,16 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     if (routeName === 'Add Post')
         iconName = 'ios-list-box';
 
+    if (routeName === 'Profile')
+        iconName = 'ios-contact';
+
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
 
 const AppBottomNavigatorHome = createBottomTabNavigator({
     Home: PostContainer,
     'Add Post': AddPostContainer,
+    Profile: ProfileContainer,
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) =>
@@ -56,7 +49,7 @@ const AppBottomNavigatorHome = createBottomTabNavigator({
     }),
     tabBarOptions: {
         activeTintColor: '#ed5e42',
-        inactiveTintColor: '#000',
+        inactiveTintColor: '#313742',
     },
 });
 
