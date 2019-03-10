@@ -6,8 +6,8 @@ export const ADD_POST_ERROR = 'ADD_POST_ERROR';
 
 // SYSTEM ACTIONS
 export const SET_LOADING = 'SET_LOADING';
-
+export const SET_ERROR = 'SET_ERROR';
 
 // USERS ACTIONS
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
+

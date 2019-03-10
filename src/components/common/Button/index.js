@@ -5,11 +5,12 @@ export default Button = (props) => {
     const {
         icon,
         title,
-        style
+        style,
+        onPress
     } = props;
 
     return (
-        <TouchableOpacity style={[styles.signUpTouchable, style]}>
+        <TouchableOpacity style={[styles.signUpTouchable, style]} onPress={onPress}>
             <Text style={styles.touchableText}>{title}</Text>
             <View style={styles.icon}>
                 {icon}

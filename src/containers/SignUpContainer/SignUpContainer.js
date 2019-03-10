@@ -9,6 +9,9 @@ class SignUpContainer extends Component {
         return (
             <SignUpScreen
                 navigation={this.props.navigation}
+                loading={this.props.loading}
+
+                signUp={this.props.signUp}
             />
         );
     }
@@ -16,12 +19,13 @@ class SignUpContainer extends Component {
 
 function mapStateToProps(state) {
     return {
+        loading: state.loading
     };
 }
 
 function mapDispatchToProps(dispatch) {
     const actions = {
-
+        signUp: actionCreators.signUp
     };
     return bindActionCreators(actions, dispatch);
 }

@@ -1,17 +1,59 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../common/Input';
 import Button from '../common/Button';
 
 class SignUpScreen extends Component {
-    static navigationOptions = {
-        title: 'Hello!',
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+            showPassword: false,
+            isSecure: true
+        };
+    }
+
+    onChangeEmail = (email) => {
+        this.setState({ email });
     };
 
+    onChangePassword = (password) => {
+        console.log(password)
+        this.setState({ password });
+    };
 
-    signUp = async () => {
+    showPassword = () => {
+        this.setState({
+            showPassword: !this.state.showPassword,
+            isSecure: !this.state.isSecure,
+        });
+    };
 
+    validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+
+    validatePass = (password) => {
+      return password.length > 4;
+    };
+
+    signUpUser = async () => {
+        if (!this.validateEmail(this.state.email))
+            return;
+
+        if (!this.validatePass(this.state.password))
+            return;
+
+        const auth = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        await this.props.signUp(auth);
+
+        this.props.navigation.navigate('App');
     };
 
     render() {
@@ -24,14 +66,22 @@ class SignUpScreen extends Component {
                     <Input
                         placeholder={'Email'}
                         style={styles.input}
+                        onChangeText={this.onChangeEmail}
                     />
                     <Input
                         placeholder={'Password'}
-                        style={styles.input}
+                        style={styles.inputPassword}
+                        onChangeText={this.onChangePassword}
+                        value={this.state.password}
+                        isSecure={this.state.isSecure}
+                        passwordType={this.state.showPassword}
+                        iconPress={this.showPassword}
                     />
                     <Button
                         icon={<Ionicons name={'ios-rocket'} size={25} color={'#fff'} />}
                         title={'Create account'}
+                        style={styles.button}
+                        onPress={this.signUpUser}
                     />
                 </View>
             </View>
@@ -68,6 +118,13 @@ const styles = StyleSheet.create({
     input: {
         width: 300,
         height: 30
+    },
+    inputPassword: {
+        width: 280,
+        height: 30
+    },
+    button: {
+        width: 300
     }
 });
 

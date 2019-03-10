@@ -63,7 +63,8 @@ export default class Input extends Component {
             style,
             onChangeText,
             placeholder,
-            isSecure
+            isSecure,
+            value
         } = this.props;
 
         return (
@@ -73,6 +74,7 @@ export default class Input extends Component {
                     secureTextEntry={isSecure}
                     placeholder={placeholder}
                     onChangeText={onChangeText}
+                    value={value}
                     onBlur={this.onBlur}
                     onFocus={this.onFocus}
                 />
