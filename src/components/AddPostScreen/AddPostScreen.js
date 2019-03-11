@@ -114,7 +114,8 @@ class AddPostScreen extends Component {
 const styles = {
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 20,
     },
     titleInputContainer: {
         marginTop: 10,

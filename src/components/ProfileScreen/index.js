@@ -1,18 +1,31 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import _ from 'lodash';
 
 class SignInScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+        this.state = {};
     }
+
+    componentDidMount() {
+        this.props.getCurrentUser();
+    }
+
+    renderUserSkeleton = () => {
+        return (
+            <View style={styles.skeleton}>
+                <View style={styles.emptyImage}/>
+                <View style={styles.emptyEmail}/>
+                <View style={styles.emptyButton}/>
+            </View>
+        );
+    };
 
     render() {
         return (
             <View style={styles.mainContainer}>
-                <Text>Profile</Text>
+                {this.renderUserSkeleton()}
             </View>
         );
     }
@@ -25,32 +38,30 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
-    signUpButton: {
-        color: '#fff',
+    skeleton: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'column'
+    },
+    emptyImage: {
+        backgroundColor: '#dbd9d9',
+        borderRadius: 100,
+        width: 100,
+        height: 100
+    },
+    emptyEmail: {
+        marginTop: 20,
+        backgroundColor: '#dbd9d9',
         borderRadius: 10,
-        padding: 20
+        width: 170,
+        height: 20
     },
-    signInTextContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    signInText: {
-        fontSize: 30
-    },
-    signUpText: {
-        color: '#ed5e42'
-    },
-    input: {
-        width: 300,
-        height: 30
-    },
-    inputPassword: {
-        width: 280,
-        height: 30
-    },
-    button: {
-        width: 300
+    emptyButton: {
+        marginTop: 30,
+        backgroundColor: '#dbd9d9',
+        borderRadius: 10,
+        width: 170,
+        height: 20
     }
 });
 

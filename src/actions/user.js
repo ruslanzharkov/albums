@@ -26,3 +26,11 @@ export const signUp = ({ email, password }) => {
         });
     };
 };
+
+
+export const getCurrentUser = () => {
+  return async dispatch => {
+      let user = await firebase.auth().currentUser;
+      console.log(user);
+  };
+};
