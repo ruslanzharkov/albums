@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import Input from '../common/Input';
 import Button from '../common/Button';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class AddPostScreen extends Component {
     constructor(props) {
@@ -99,7 +100,8 @@ class AddPostScreen extends Component {
                     />
 
                     <Button
-                        title={'Add Post'}
+                        icon={<Ionicons name={'ios-add'} size={25} color={'#fff'} />}
+                        title={'Add new post'}
                         onPress={this.addPost}
                     />
                 </View>
@@ -118,7 +120,7 @@ const styles = {
         marginTop: 10,
     },
     errorTitleInput: {
-        borderBottomColor: '#f23a3a',
+        borderColor: '#f23a3a',
         borderWidth: 0.5,
     },
     input: {
