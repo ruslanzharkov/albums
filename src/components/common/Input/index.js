@@ -64,7 +64,8 @@ export default class Input extends Component {
             onChangeText,
             placeholder,
             isSecure,
-            value
+            value,
+            ...others
         } = this.props;
 
         return (
@@ -77,6 +78,7 @@ export default class Input extends Component {
                     value={value}
                     onBlur={this.onBlur}
                     onFocus={this.onFocus}
+                    {...others}
                 />
                 {this.renderEyeIcons()}
             </View>
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
        justifyContent: 'center',
        alignItems: 'center',
        backgroundColor: '#fff',
+       borderRadius: 5,
    },
     eyeIcon: {
         marginLeft: -18,

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text, Button} from 'react-native';
+import {View} from 'react-native';
+import Input from '../common/Input';
+import Button from '../common/Button';
 
 class AddPostScreen extends Component {
     constructor(props) {
@@ -64,27 +66,30 @@ class AddPostScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.titleInputContainer}>
-                    {this.state.title.length !== 0 ? <Text>Post title</Text> : <View style={{height: 17}}/>}
-                    <TextInput
-                        style={[styles.titleInput, this.state.emptyTitle ? styles.errorTitleInput : null]}
+                     <Input
+                        style={[styles.input,
+                            this.state.emptyTitle ? styles.errorTitleInput : null
+                        ]}
                         placeholder={this.state.title.length === 0 ? 'Post title' : null}
                         onChangeText={this.titleChangeHandler}
-                    />
+                     />
                 </View>
 
                 <View style={styles.titleInputContainer}>
-                    {this.state.author.length !== 0 ? <Text>Post author</Text> : <View style={{height: 17}}/>}
-                    <TextInput
-                        style={[styles.titleInput, this.state.emptyAuthor ? styles.errorTitleInput : null]}
+                    <Input
+                        style={[styles.input,
+                            this.state.emptyAuthor ? styles.errorTitleInput : null
+                        ]}
                         placeholder={this.state.author.length === 0 ? 'Post author' : null}
                         onChangeText={this.authorChangeHandler}
                     />
                 </View>
 
                 <View style={styles.titleInputContainer}>
-                    {this.state.content.length !== 0 ? <Text>Post content</Text> : <View style={{height: 17}}/>}
-                    <TextInput
-                        style={[styles.contentInput, this.state.emptyContent ? styles.errorTitleInput : null]}
+                    <Input
+                        style={[styles.contentInput,
+                            this.state.emptyContent ? styles.errorTitleInput : null
+                        ]}
                         placeholder={this.state.content.length === 0 ? 'Post content' : null}
                         editable={true}
                         maxLength={4000}
@@ -106,30 +111,33 @@ class AddPostScreen extends Component {
 
 const styles = {
     container: {
-        marginHorizontal: 10
+        flex: 1,
+        alignItems: 'center'
     },
     titleInputContainer: {
         marginTop: 10,
     },
     errorTitleInput: {
-        borderColor: '#f23a3a',
-        borderWidth: 1,
+        borderBottomColor: '#f23a3a',
+        borderWidth: 0.5,
     },
-    titleInput: {
+    input: {
+        width: 300,
+        height: 30,
         paddingLeft: 8,
         paddingRight: 8,
-        height: 40,
+        borderWidth: 0.5,
         borderColor: '#757575',
-        borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 5,
     },
     contentInput: {
         paddingLeft: 8,
-        paddingRight: 8,
-        height: 300,
         borderColor: '#757575',
-        borderWidth: 1,
-        borderRadius: 10,
+        paddingRight: 8,
+        width: 300,
+        height: 300,
+        borderWidth: 0.5,
+        borderRadius: 5,
     }
 };
 
