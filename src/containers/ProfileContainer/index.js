@@ -12,6 +12,7 @@ class ProfileContainer extends Component {
                 loading={this.props.loading}
 
                 getCurrentUser={this.props.getCurrentUser}
+                logoutFromApp={this.props.logoutFromApp}
             />
         );
     }
@@ -25,7 +26,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     const actions = {
-        getCurrentUser: actionCreators.getCurrentUser
+        getCurrentUser: actionCreators.getCurrentUser,
+        logoutFromApp: actionCreators.logoutFromApp,
     };
     return bindActionCreators(actions, dispatch);
 }

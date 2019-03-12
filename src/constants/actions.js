@@ -7,6 +7,7 @@ export const ADD_POST_ERROR = 'ADD_POST_ERROR';
 // SYSTEM ACTIONS
 export const SET_LOADING = 'SET_LOADING';
 export const SET_ERROR = 'SET_ERROR';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 // USERS ACTIONS
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';

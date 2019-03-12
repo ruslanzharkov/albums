@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import _ from 'lodash';
 
+import Button from '../common/Button';
+
 class SignInScreen extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +14,7 @@ class SignInScreen extends Component {
         this.props.getCurrentUser();
     }
 
-    renderUserSkeleton = () => {
+    userSkeleton = () => {
         return (
             <View style={styles.skeleton}>
                 <View style={styles.emptyImage}/>
@@ -22,10 +24,32 @@ class SignInScreen extends Component {
         );
     };
 
+    userInfo = () => {
+        return (
+            <View>
+                <Button
+                    style={styles.button}
+                    onPress={this.userLogout}
+                >
+                    Logout
+                </Button>
+            </View>
+        );
+    };
+
+    userLogout = async () => {
+        await this.props.logoutFromApp();
+        this.props.navigation.navigate('Auth');
+    };
+
     render() {
         return (
             <View style={styles.mainContainer}>
-                {this.renderUserSkeleton()}
+                {
+                    !_.isEmpty(this.props.currentUser) ?
+                        this.userSkeleton() :
+                        this.userInfo()
+                }
             </View>
         );
     }
@@ -62,6 +86,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 170,
         height: 20
+    },
+    button: {
+        width: 200,
     }
 });
 

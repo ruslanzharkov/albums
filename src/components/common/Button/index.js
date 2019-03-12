@@ -11,7 +11,7 @@ export default Button = (props) => {
 
     return (
         <TouchableOpacity style={[styles.signUpTouchable, style]} onPress={onPress}>
-            <Text style={styles.touchableText}>{title}</Text>
+            <Text style={styles.touchableText}>{title || props.children}</Text>
             <View style={styles.icon}>
                 {icon}
             </View>

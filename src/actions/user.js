@@ -34,3 +34,25 @@ export const getCurrentUser = () => {
       console.log(user);
   };
 };
+
+
+export const logoutFromApp = () => {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.SET_LOADING
+        });
+
+        try {
+            await AsyncStorage.removeItem('userToken');
+            dispatch({
+                type: actionTypes.LOGOUT_SUCCESS,
+                payload: ''
+            });
+        } catch (e) {
+            dispatch({
+                type: actionTypes.SET_ERROR,
+                payload: e.message
+            });
+        }
+    };
+};
