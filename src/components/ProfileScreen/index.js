@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import _ from 'lodash';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../common/Button';
 
 class SignInScreen extends Component {
@@ -36,6 +36,7 @@ class SignInScreen extends Component {
                 </View>
                 <Button
                     style={styles.button}
+                    icon={<Ionicons name={'ios-log-out'} size={25} color={'#fff'} />}
                     onPress={this.userLogout}
                 >
                     Logout
