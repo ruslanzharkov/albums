@@ -71,7 +71,7 @@ class AddPostScreen extends Component {
                         style={[styles.input,
                             this.state.emptyTitle ? styles.errorTitleInput : null
                         ]}
-                        placeholder={this.state.title.length === 0 ? 'Post title' : null}
+                        placeholder={'Title'}
                         onChangeText={this.titleChangeHandler}
                      />
                 </View>
@@ -81,7 +81,7 @@ class AddPostScreen extends Component {
                         style={[styles.input,
                             this.state.emptyAuthor ? styles.errorTitleInput : null
                         ]}
-                        placeholder={this.state.author.length === 0 ? 'Post author' : null}
+                        placeholder={'Author'}
                         onChangeText={this.authorChangeHandler}
                     />
                 </View>
@@ -91,7 +91,7 @@ class AddPostScreen extends Component {
                         style={[styles.contentInput,
                             this.state.emptyContent ? styles.errorTitleInput : null
                         ]}
-                        placeholder={this.state.content.length === 0 ? 'Post content' : null}
+                        placeholder={'Content'}
                         editable={true}
                         maxLength={4000}
                         multiline={true}
