@@ -10,6 +10,7 @@ class ProfileContainer extends Component {
             <ProfileScreen
                 navigation={this.props.navigation}
                 loading={this.props.loading}
+                currentUser={this.props.currentUser}
 
                 getCurrentUser={this.props.getCurrentUser}
                 logoutFromApp={this.props.logoutFromApp}
@@ -20,7 +21,8 @@ class ProfileContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        loading: state.loading
+        loading: state.loading,
+        currentUser: state.currentUser
     };
 }
 

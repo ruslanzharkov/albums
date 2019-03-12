@@ -30,8 +30,12 @@ export const signUp = ({ email, password }) => {
 
 export const getCurrentUser = () => {
   return async dispatch => {
-      let user = await firebase.auth().currentUser;
-      console.log(user);
+      const user = await firebase.auth().currentUser;
+
+      dispatch({
+         type: actionTypes.GET_CURRENT_USER,
+         payload: user._user
+      });
   };
 };
 

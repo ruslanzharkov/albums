@@ -26,7 +26,14 @@ class SignInScreen extends Component {
 
     userInfo = () => {
         return (
-            <View>
+            <View style={styles.skeleton}>
+                <View style={styles.emptyImage}/>
+                <View>
+                    <Text>{this.props.currentUser.displayName}</Text>
+                </View>
+                <View style={styles.email}>
+                    <Text>{this.props.currentUser.email}</Text>
+                </View>
                 <Button
                     style={styles.button}
                     onPress={this.userLogout}
@@ -46,7 +53,7 @@ class SignInScreen extends Component {
         return (
             <View style={styles.mainContainer}>
                 {
-                    !_.isEmpty(this.props.currentUser) ?
+                    _.isEmpty(this.props.currentUser) ?
                         this.userSkeleton() :
                         this.userInfo()
                 }
@@ -89,6 +96,10 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 200,
+    },
+    email: {
+        marginTop: 5,
+        marginBottom: 4
     }
 });
 
