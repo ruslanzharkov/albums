@@ -52,7 +52,7 @@ export default PostItem;
 
 const styles = {
     postContainer: {
-        height: 80,
+        height: 90,
         backgroundColor: '#fff',
         borderRadius: 10,
         padding: 10,
