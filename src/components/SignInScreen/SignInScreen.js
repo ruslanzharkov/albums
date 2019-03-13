@@ -8,7 +8,7 @@ class SignInScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: '',
+            email: '',
             password: '',
             showPassword: false,
             isSecure: true
@@ -19,6 +19,14 @@ class SignInScreen extends Component {
         this.props.navigation.navigate('SignUp');
     };
 
+    onChangeEmail = (email) => {
+        this.setState({ email });
+    };
+
+    onChangePassword = (password) => {
+        this.setState({ password });
+    };
+
     showPassword = () => {
         this.setState({
             showPassword: !this.state.showPassword,
@@ -26,12 +34,29 @@ class SignInScreen extends Component {
         });
     };
 
-    onChangeLogin = () => {
-
+    validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     };
 
-    onChangePassword = () => {
+    validatePass = (password) => {
+        return password.length > 4;
+    };
 
+    signInUser = async () => {
+        if (!this.validateEmail(this.state.email))
+            return;
+
+        if (!this.validatePass(this.state.password))
+            return;
+
+        const auth = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        await this.props.signIn(auth);
+
+        this.props.navigation.navigate('App');
     };
 
     render() {
@@ -43,11 +68,14 @@ class SignInScreen extends Component {
                     </View>
                     <Input
                         placeholder={'Email'}
+                        onChangeText={this.onChangeEmail}
                         style={styles.input}
                     />
                     <Input
                         placeholder={'Password'}
                         style={styles.inputPassword}
+                        onChangeText={this.onChangePassword}
+                        value={this.state.password}
                         isSecure={this.state.isSecure}
                         passwordType={this.state.showPassword}
                         iconPress={this.showPassword}
@@ -58,6 +86,7 @@ class SignInScreen extends Component {
                     icon={<Ionicons name={'ios-log-in'} size={25} color={'#fff'} />}
                     title={'Log In'}
                     style={styles.button}
+                    onPress={this.signInUser}
                 />
                 <TouchableOpacity style={styles.signUpButton} onPress={this._goToSignUp}>
                     <Text style={styles.signUpText}>Not have an account? Sign Up</Text>

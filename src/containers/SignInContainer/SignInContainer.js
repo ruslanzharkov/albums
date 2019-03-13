@@ -9,6 +9,8 @@ class SignInContainer extends Component {
         return (
             <SignInScreen
                 navigation={this.props.navigation}
+
+                signIn={this.props.signIn}
             />
         );
     }
@@ -21,7 +23,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     const actions = {
-
+        signIn: actionCreators.signIn
     };
     return bindActionCreators(actions, dispatch);
 }
