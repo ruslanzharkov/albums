@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Input from '../common/Input';
-import Button from '../common/Button';
+import Input from '../commonComponent/Input';
+import Button from '../commonComponent/Button';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class SignInScreen extends Component {

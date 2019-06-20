@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
-import Input from '../common/Input';
-import Button from '../common/Button';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Input from '../commonComponent/Input';
+import Button from '../commonComponent/Button';
 
-class AddPostScreen extends Component {
+class AddPostComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -23,8 +23,9 @@ class AddPostScreen extends Component {
         const author = this.state.author;
         const content = this.state.content;
 
-        if (this.emptyChecker(title, author, content))
+        if (this.emptyChecker(title, author, content)) {
             return;
+        }
 
         const date = new Date();
         const postNumber = this.props.posts.length + 1;
@@ -92,9 +93,9 @@ class AddPostScreen extends Component {
                             this.state.emptyContent ? styles.errorTitleInput : null
                         ]}
                         placeholder={'Content'}
-                        editable={true}
+                        editable
                         maxLength={4000}
-                        multiline={true}
+                        multiline
                         numberOfLines={14}
                         onChangeText={this.contentChangeHandler}
                     />
@@ -144,4 +145,4 @@ const styles = {
     }
 };
 
-export default AddPostScreen;
+export default AddPostComponent;

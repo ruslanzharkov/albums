@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-class PostDetailsScreen extends Component {
+class PostDetailsComponent extends Component {
     static defaultNavigationOptions = {
         title: 'Hello!',
     };
@@ -63,4 +63,4 @@ const styles = {
     }
 };
 
-export default PostDetailsScreen;
+export default PostDetailsComponent;

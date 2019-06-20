@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../actions';
-import ProfileScreen from '../../components/ProfileScreen';
+import ProfileScreen from '../../components/profileComponent';
 
 class ProfileContainer extends Component {
     render() {

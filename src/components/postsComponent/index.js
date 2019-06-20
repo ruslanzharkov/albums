@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, FlatList } from 'react-native';
 import _ from 'lodash';
-import Post from './PostItem';
+import Post from './postItem';
 
-class PostsScreen extends Component {
+class Index extends Component {
     componentDidMount() {
         this.props.getPosts();
     }
@@ -49,7 +49,7 @@ class PostsScreen extends Component {
     }
 }
 
-export default PostsScreen;
+export default Index;
 
 const styles = {
     activity: {

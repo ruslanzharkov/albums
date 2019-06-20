@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Input from '../common/Input';
-import Button from '../common/Button';
+import Input from '../commonComponent/Input';
+import Button from '../commonComponent/Button';
 
 class SignUpScreen extends Component {
     constructor(props) {

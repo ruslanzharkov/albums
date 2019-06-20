@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Button from '../common/Button';
+import Button from '../commonComponent/Button';
 
 class SignInScreen extends Component {
     constructor(props) {

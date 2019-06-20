@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {actionCreators} from '../../actions';
-import SignInScreen from '../../components/SignInScreen';
+import SignInScreen from '../../components/SignInComponent';
 
 class SignInContainer extends Component {
     render() {
