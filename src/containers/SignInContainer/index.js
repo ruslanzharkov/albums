@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {actionCreators} from '../../actions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../actions';
 import SignInScreen from '../../components/SignInComponent';
 
 class Index extends Component {
@@ -9,16 +9,10 @@ class Index extends Component {
         return (
             <SignInScreen
                 navigation={this.props.navigation}
-
                 signIn={this.props.signIn}
             />
         );
     }
-}
-
-function mapStateToProps(state) {
-    return {
-    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -28,4 +22,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(undefined, mapDispatchToProps)(Index);

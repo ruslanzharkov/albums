@@ -19,9 +19,7 @@ class AddPostComponent extends Component {
     }
 
     addPost = () => {
-        const title = this.state.title;
-        const author = this.state.author;
-        const content = this.state.content;
+        const { title, author, content } = this.state;
 
         if (this.emptyChecker(title, author, content)) {
             return;
