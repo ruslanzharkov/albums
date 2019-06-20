@@ -12,9 +12,12 @@ target 'albums' do
   pod 'Firebase/Database', '~> 5.15.0'
 
   rn_path = '../node_modules/react-native'
-    pod "yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
+
+    pod 'yoga', path: "#{rn_path}/ReactCommon/yoga"
     pod 'React', path: rn_path, subspecs: [
       'Core',
+      'CxxBridge',
+      'DevSupport',
       'RCTActionSheet',
       'RCTAnimation',
       'RCTGeolocation',
@@ -24,25 +27,16 @@ target 'albums' do
       'RCTSettings',
       'RCTText',
       'RCTVibration',
-      'RCTWebSocket'
+      'RCTWebSocket',
     ]
+    pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
 
-  target 'albumsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
-
-target 'albums-tvOS' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for albums-tvOS
-
-  target 'albums-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    post_install do |installer|
+      installer.pods_project.targets.each do |target|
+        if target.name == "React"
+          target.remove_from_project
+        end
+      end
+    end
 
 end
