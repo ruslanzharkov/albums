@@ -7,9 +7,9 @@ target 'albums' do
 
   # Pods for albums
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core', '~> 5.15.0'
-  pod 'Firebase/Auth', '~> 5.15.0'
-  pod 'Firebase/Database', '~> 5.15.0'
+  pod 'Firebase/Core', '~> 5.19.0'
+  pod 'Firebase/Auth', '~> 5.19.0'
+  pod 'Firebase/Database', '~> 5.19.0'
 
   rn_path = '../node_modules/react-native'
 
