@@ -1,11 +1,12 @@
-import React, {PureComponent} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import React, { PureComponent } from 'react';
+import { TouchableOpacity, View, Text } from 'react-native';
 
 class PostItem extends PureComponent {
 
     goDetailsScreen = (postDetailInfo) => {
-        if (this.props.onPress)
+        if (this.props.onPress) {
             this.props.onPress(postDetailInfo);
+        }
     };
 
     render() {
@@ -41,7 +42,7 @@ class PostItem extends PureComponent {
                         </View>
                     </View>
 
-                    <View style={styles.separateLine}/>
+                    <View style={styles.separateLine} />
                 </TouchableOpacity>
             </View>
         );

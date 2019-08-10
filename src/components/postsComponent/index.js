@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator, FlatList } from 'react-native';
+import { ScrollView, View, ActivityIndicator, FlatList } from 'react-native';
 import _ from 'lodash';
 import Post from './postItem';
 
@@ -8,14 +8,14 @@ class Index extends Component {
         this.props.getPosts();
     }
 
-    _keyExtractor = (item, index) => `${index}`;
+    _keyExtractor = (post, index) => `${index}`;
 
     goDetailsScreen = (postDetailInfo) => {
         this.props.getPostDetails(postDetailInfo);
         this.props.navigation.navigate('Details');
     };
 
-    _renderItem = ({item}) => (
+    _renderItem = ({ item }) => (
         <Post
             onPress={this.goDetailsScreen}
             post={item}
@@ -26,7 +26,7 @@ class Index extends Component {
         if (_.isEmpty(this.props.posts)) {
             return (
                 <View style={styles.activity}>
-                    <ActivityIndicator size="large" color="#0000ff" />
+                    <ActivityIndicator size="large" color="#0000ff"/>
                 </View>
             );
         }

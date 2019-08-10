@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../actions';
 import SignInScreen from '../../components/SignInComponent';
 
-class Index extends Component {
+class SigInContainer extends Component {
     render() {
         return (
             <SignInScreen
@@ -22,4 +22,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-export default connect(undefined, mapDispatchToProps)(Index);
+export default connect(undefined, mapDispatchToProps)(SigInContainer);
