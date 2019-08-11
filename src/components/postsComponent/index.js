@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { ScrollView, View, ActivityIndicator, FlatList } from 'react-native';
+import { View, ActivityIndicator, FlatList } from 'react-native';
 import _ from 'lodash';
 import Post from './postItem';
 
 class Index extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            scrollEnabled: true
+        };
+    }
+
     componentDidMount() {
         this.props.getPosts();
     }
@@ -15,9 +22,16 @@ class Index extends Component {
         this.props.navigation.navigate('Details');
     };
 
+    setScrollEnabled = (enabled) => {
+        this.setState({
+            enabled
+        });
+    };
+
     _renderItem = ({ item }) => (
         <Post
             onPress={this.goDetailsScreen}
+            setScrollEnabled={this.setScrollEnabled}
             post={item}
         />
     );
@@ -36,6 +50,7 @@ class Index extends Component {
                 data={this.props.posts}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
+                scrollEnabled={this.state.scrollEnabled}
             />
         );
     };

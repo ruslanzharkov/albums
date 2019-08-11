@@ -1,14 +1,15 @@
 import firebase from 'react-native-firebase';
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 import * as actionTypes from '../constants/actions';
 
-export const signUp = ({email, password}) => {
+export const signUp = ({ email, password }) => {
     return async dispatch => {
         dispatch({
             type: actionTypes.SET_LOADING
         });
 
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth()
+            .createUserWithEmailAndPassword(email, password)
             .catch((error) => {
                 dispatch({
                     type: actionTypes.SET_ERROR,
@@ -25,24 +26,24 @@ export const signUp = ({email, password}) => {
     };
 };
 
-export const signIn = ({email, password}) => {
+export const signIn = ({ email, password }) => {
     return async dispatch => {
         dispatch({
             type: actionTypes.SET_LOADING
         });
-        let error = '';
+        let errorMessage = '';
 
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth()
+            .signInWithEmailAndPassword(email, password)
             .catch((error) => {
-                error = error.message;
-                console.log(error.message)
+                errorMessage = error.message;
                 dispatch({
                     type: actionTypes.SET_ERROR,
                     payload: error.message
                 });
             });
 
-        if (!error) {
+        if (!errorMessage) {
             await AsyncStorage.setItem('userToken', password);
 
             dispatch({
@@ -75,14 +76,17 @@ export const logoutFromApp = () => {
 
         try {
             await AsyncStorage.removeItem('userToken');
-            firebase.auth().signOut().then(function () {
-                dispatch({
-                    type: actionTypes.LOGOUT_SUCCESS,
-                    payload: ''
+            firebase.auth()
+                .signOut()
+                .then(function () {
+                    dispatch({
+                        type: actionTypes.LOGOUT_SUCCESS,
+                        payload: ''
+                    });
+                })
+                .catch((error) => {
+                    // An error happened.
                 });
-            }).catch((error) => {
-                // An error happened.
-            });
         } catch (e) {
             dispatch({
                 type: actionTypes.SET_ERROR,

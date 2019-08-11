@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import PostsScreen from '../../components/postsComponent';
+import PostsScreen from '../../components/PostsComponent';
 import { actionCreators } from '../../actions';
 
 class Index extends Component {

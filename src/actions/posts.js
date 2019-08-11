@@ -9,20 +9,22 @@ function setLoading(dispatch) {
 
 export const getPosts = () => {
     return dispatch => {
-        db.ref('posts').once('value', (data) => {
-            const posts = [];
-            const fireData = data.toJSON();
+        db.ref('posts')
+            .once('value', (data) => {
+                const posts = [];
+                const fireData = data.toJSON();
 
-            for (let i = 0; i < fireData.length; i++) {
-                if (fireData[i] !== null)
-                    posts.push(fireData[i]);
-            }
+                for (let i = 0; i < fireData.length; i++) {
+                    if (fireData[i] !== null) {
+                        posts.push(fireData[i]);
+                    }
+                }
 
-            dispatch({
-                type: actionTypes.GET_POSTS,
-                payload: [...posts]
+                dispatch({
+                    type: actionTypes.GET_POSTS,
+                    payload: [...posts]
+                });
             });
-        });
     };
 };
 
@@ -39,23 +41,35 @@ export const addNewPost = ({ title, author, content, formattedDate, postNumber }
 
     //TODO: try to refactor on async/await construction
     return dispatch => {
-        db.ref(`posts/${postNumber}`).set({
-            author,
-            title,
-            content,
-            formattedDate
-        })
-        .then(() => {
-            dispatch({
-                type: actionTypes.ADD_POST,
-                payload: 'Post success added!'
+        db.ref(`posts/${postNumber}`)
+            .set({
+                author,
+                title,
+                content,
+                formattedDate
+            })
+            .then(() => {
+                dispatch({
+                    type: actionTypes.ADD_POST,
+                    payload: 'Post success added!'
+                });
+            })
+            .catch(() => {
+                dispatch({
+                    type: actionTypes.ADD_POST_ERROR,
+                    payload: 'Error, please try again later'
+                });
             });
-        })
-        .catch(() => {
-            dispatch({
-                type: actionTypes.ADD_POST_ERROR,
-                payload: 'Error, please try again later'
-            });
-        });
     };
+};
+
+
+export const removePost = (post) => {
+    try {
+        return async dispatch => {
+            await db.ref(`posts/${post.id}`).remove();
+        };
+    } catch (e) {
+
+    }
 };
