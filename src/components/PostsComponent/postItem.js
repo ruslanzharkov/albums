@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { TouchableOpacity, View, Text, Animated, PanResponder, Dimensions } from 'react-native';
+import { TouchableHighlight, View, Text, Animated, PanResponder, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -28,7 +28,7 @@ class PostItem extends PureComponent {
             onPanResponderMove: (evt, gestureState) => {
                 if (gestureState.dx > 35) {
                     this.setScrollViewEnabled(false);
-                    let newX = gestureState.dx + this.gestureDelay;
+                    const newX = gestureState.dx + this.gestureDelay;
                     position.setValue({ x: newX, y: 0 });
                 }
             },
@@ -90,43 +90,45 @@ class PostItem extends PureComponent {
                     style={[this.state.position.getLayout()]}
                     {...this.panResponder.panHandlers}
                 >
-                    <TouchableOpacity
+                    <TouchableHighlight
                         disabled={this.state.disableTouch}
                         style={styles.innerPostContainer}
                         onPress={() => this.goDetailsScreen(this.props.post)}
                     >
-                        <View style={styles.absoluteCell}>
-                            <Text style={styles.absoluteCellText}>DELETE</Text>
-                        </View>
-
-                        <View style={styles.innerCell}>
-                            <View>
-                                <Text style={styles.author}>
-                                    {this.props.post.title}
-                                </Text>
+                        <View>
+                            <View style={styles.absoluteCell}>
+                                <Text style={styles.absoluteCellText}>DELETE</Text>
                             </View>
 
-                            <View style={styles.aboutContainer}>
-                                <View style={styles.titleContainer}>
-                                    <Text style={styles.titleContent}>
-                                        Author:
-                                    </Text>
-                                    <Text>
-                                        {this.props.post.author}
+                            <View style={styles.innerCell}>
+                                <View>
+                                    <Text style={styles.author}>
+                                        {this.props.post.title}
                                     </Text>
                                 </View>
 
-                                <View style={styles.titleContainer}>
-                                    <Text style={styles.titleContent}>
-                                        Date:
-                                    </Text>
-                                    <Text>
-                                        {'10/01/19'}
-                                    </Text>
+                                <View style={styles.aboutContainer}>
+                                    <View style={styles.titleContainer}>
+                                        <Text style={styles.titleContent}>
+                                            Author:
+                                        </Text>
+                                        <Text>
+                                            {this.props.post.author}
+                                        </Text>
+                                    </View>
+
+                                    <View style={styles.titleContainer}>
+                                        <Text style={styles.titleContent}>
+                                            Date:
+                                        </Text>
+                                        <Text>
+                                            {'10/01/19'}
+                                        </Text>
+                                    </View>
                                 </View>
                             </View>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 </Animated.View>
             </View>
         );
@@ -154,6 +156,11 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
+    },
+
+    absoluteCellText: {
+        margin: 16,
+        color: '#fff',
     },
 
     innerCell: {
