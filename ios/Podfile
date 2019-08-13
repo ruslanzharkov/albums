@@ -30,6 +30,7 @@ target 'albums' do
       'RCTWebSocket',
     ]
     pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
+    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
     post_install do |installer|
       installer.pods_project.targets.each do |target|

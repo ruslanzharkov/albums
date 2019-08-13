@@ -3,9 +3,11 @@ import {
     View,
     ActivityIndicator,
     StatusBar,
-    StyleSheet,
-    AsyncStorage
+    StyleSheet
 } from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {
     createBottomTabNavigator,
     createStackNavigator,
@@ -23,17 +25,21 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
     const IconComponent = Ionicons;
     let iconName;
-    if (routeName === 'Home')
+    if (routeName === 'Home') {
         iconName = 'ios-home';
+    }
 
-    if (routeName === 'SignIn')
+    if (routeName === 'SignIn') {
         iconName = 'ios-people';
+    }
 
-    if (routeName === 'Add Post')
+    if (routeName === 'Add Post') {
         iconName = 'ios-list-box';
+    }
 
-    if (routeName === 'Profile')
+    if (routeName === 'Profile') {
         iconName = 'ios-contact';
+    }
 
     return <IconComponent name={iconName} size={25} color={tintColor} />;
 };
@@ -76,14 +82,14 @@ const AppStack = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-              backgroundColor: '#ed5e42',
+                backgroundColor: '#ed5e42',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold',
+                fontWeight: 'bold',
             },
             title: 'Albums'
-          },
+        },
     }
 );
 
