@@ -3,7 +3,7 @@ import { TouchableHighlight, View, Text, Animated, PanResponder, Dimensions } fr
 
 const { width } = Dimensions.get('window');
 
-class PostItem extends PureComponent {
+class Post extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -47,8 +47,13 @@ class PostItem extends PureComponent {
                         duration: 300,
                     })
                         .start(() => {
-                            this.props.success(this.props.text);
+                            this.removePost();
                             this.setScrollViewEnabled(true);
+
+                            Animated.timing(this.state.position, {
+                                toValue: { x: 0, y: 0 },
+                                duration: 150,
+                            });
                         });
                 }
             },
@@ -81,6 +86,11 @@ class PostItem extends PureComponent {
         if (this.props.onPress) {
             this.props.onPress(postDetailInfo);
         }
+    };
+
+    removePost = () => {
+        this.props.removePost(this.props.post.id);
+        this.props.getPosts();
     };
 
     render() {
@@ -135,7 +145,7 @@ class PostItem extends PureComponent {
     }
 }
 
-export default PostItem;
+export default Post;
 
 const styles = {
     postContainer: {

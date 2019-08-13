@@ -1,11 +1,6 @@
 import * as actionTypes from '../constants/actions';
 import { db } from '../config/db';
-
-function setLoading(dispatch) {
-    dispatch({
-        type: actionTypes.SET_LOADING
-    });
-}
+import * as systemActions from './system';
 
 export const getPosts = () => {
     return dispatch => {
@@ -16,9 +11,13 @@ export const getPosts = () => {
 
                 for (let i = 0; i < fireData.length; i++) {
                     if (fireData[i] !== null) {
-                        posts.push(fireData[i]);
+                        posts.push({
+                            id: i,
+                            ...fireData[i]
+                        });
                     }
                 }
+                console.log(posts);
 
                 dispatch({
                     type: actionTypes.GET_POSTS,
@@ -38,36 +37,38 @@ export const getPostDetails = (postDetails) => {
 };
 
 export const addNewPost = ({ title, author, content, formattedDate, postNumber }) => {
+    return async dispatch => {
+        try {
+            systemActions.setLoading();
 
-    //TODO: try to refactor on async/await construction
-    return dispatch => {
-        db.ref(`posts/${postNumber}`)
-            .set({
-                author,
-                title,
-                content,
-                formattedDate
-            })
-            .then(() => {
-                dispatch({
-                    type: actionTypes.ADD_POST,
-                    payload: 'Post success added!'
+            await db.ref(`posts/${postNumber}`)
+                .set({
+                    author,
+                    title,
+                    content,
+                    formattedDate
                 });
-            })
-            .catch(() => {
-                dispatch({
-                    type: actionTypes.ADD_POST_ERROR,
-                    payload: 'Error, please try again later'
-                });
+
+            dispatch({
+                type: actionTypes.ADD_POST,
+                payload: 'Post success added!'
             });
+            systemActions.stopLoading();
+        } catch (e) {
+            dispatch({
+                type: actionTypes.ADD_POST_ERROR,
+                payload: 'Error, please try again later'
+            });
+        }
     };
 };
 
 
-export const removePost = (post) => {
+export const removePost = (postId) => {
     try {
         return async dispatch => {
-            await db.ref(`posts/${post.id}`).remove();
+            await db.ref(`posts/${postId}`)
+                .remove();
         };
     } catch (e) {
 

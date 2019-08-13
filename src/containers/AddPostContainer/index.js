@@ -10,6 +10,8 @@ class PostContainer extends Component {
             <AddPostScreen
                 addNewPost={this.props.addNewPost}
                 posts={this.props.posts}
+
+                isLoading={this.props.isLoading}
             />
         );
     }
@@ -17,7 +19,8 @@ class PostContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        posts: state.posts,
+        isLoading: state.isLoading
     };
 }
 

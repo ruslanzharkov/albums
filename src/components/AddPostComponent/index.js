@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../commonComponent/Input';
 import Button from '../commonComponent/Button';
@@ -98,11 +98,16 @@ class AddPostComponent extends Component {
                         onChangeText={this.contentChangeHandler}
                     />
 
-                    <Button
-                        icon={<Ionicons name={'ios-add'} size={25} color={'#fff'} />}
-                        title={'Add new post'}
-                        onPress={this.addPost}
-                    />
+                    {
+                        this.props.isLoading ?
+                            <ActivityIndicator size="large" color="#0000ff" />
+                            :
+                            <Button
+                                icon={<Ionicons name={'ios-add'} size={25} color={'#fff'} />}
+                                title={'Add new post'}
+                                onPress={this.addPost}
+                            />
+                    }
                 </View>
             </View>
         );

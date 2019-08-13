@@ -13,6 +13,7 @@ class Index extends Component {
 
                 getPosts={this.props.getPosts}
                 getPostDetails={this.props.getPostDetails}
+                removePost={this.props.removePost}
             />
         );
     }
@@ -28,6 +29,7 @@ function mapDispatchToProps(dispatch) {
     const actions = {
         getPosts: actionCreators.getPosts,
         getPostDetails: actionCreators.getPostDetails,
+        removePost: actionCreators.removePost,
     };
     return bindActionCreators(actions, dispatch);
 }

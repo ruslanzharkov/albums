@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, FlatList } from 'react-native';
 import _ from 'lodash';
-import Post from './postItem';
+import Post from './post';
 
-class Index extends Component {
+class PostsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,6 +31,8 @@ class Index extends Component {
     _renderItem = ({ item }) => (
         <Post
             onPress={this.goDetailsScreen}
+            getPosts={this.props.getPosts}
+            removePost={this.props.removePost}
             setScrollEnabled={this.setScrollEnabled}
             post={item}
         />
@@ -64,7 +66,7 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default PostsComponent;
 
 const styles = {
     activity: {

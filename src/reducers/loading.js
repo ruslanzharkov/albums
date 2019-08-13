@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/actions';
 
-export const loading = (state = [], action) => {
+export const isLoading = (state = [], action) => {
     switch (action.type) {
         case actionTypes.SET_LOADING:
             return true;
