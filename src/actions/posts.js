@@ -17,7 +17,6 @@ export const getPosts = () => {
                         });
                     }
                 }
-                console.log(posts);
 
                 dispatch({
                     type: actionTypes.GET_POSTS,
