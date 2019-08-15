@@ -6,16 +6,13 @@ export const getPosts = () => {
     return dispatch => {
         db.ref('posts')
             .once('value', (data) => {
-                const posts = [];
-                const fireData = data.toJSON();
+                let posts = [];
+                const firebasePosts = data.toJSON();
 
-                for (let i = 0; i < fireData.length; i++) {
-                    if (fireData[i] !== null) {
-                        posts.push({
-                            id: i,
-                            ...fireData[i]
-                        });
-                    }
+                if (Array.isArray(firebasePosts)) {
+                    posts = firebaseArrayHandler(firebasePosts);
+                } else {
+                    posts = firebaseObjectHandler(firebasePosts);
                 }
 
                 dispatch({
@@ -24,6 +21,36 @@ export const getPosts = () => {
                 });
             });
     };
+};
+
+const firebaseArrayHandler = (firebasePosts) => {
+    const posts = [];
+
+    for (let i = 0; i < firebasePosts.length; i++) {
+        if (firebasePosts[i] !== null) {
+            posts.push({
+                id: i,
+                ...firebasePosts[i]
+            });
+        }
+    }
+
+    return [...posts];
+};
+
+const firebaseObjectHandler = (firebasePosts) => {
+    const posts = [];
+
+    for (const firebasePostKey in firebasePosts) {
+        if (firebasePosts.hasOwnProperty(firebasePostKey)) {
+            posts.push({
+                id: firebasePostKey,
+                ...firebasePosts[firebasePostKey]
+            });
+        }
+    }
+
+    return [...posts];
 };
 
 export const getPostDetails = (postDetails) => {
