@@ -15,20 +15,20 @@ class PostsComponent extends Component {
         this.props.getPosts();
     }
 
-    _keyExtractor = (post, index) => `${index}`;
-
-    goDetailsScreen = (postDetailInfo) => {
-        this.props.getPostDetails(postDetailInfo);
-        this.props.navigation.navigate('Details');
-    };
-
     setScrollEnabled = (enabled) => {
         this.setState({
             enabled
         });
     };
 
-    _renderItem = ({ item }) => (
+    goDetailsScreen = (postDetailInfo) => {
+        this.props.getPostDetails(postDetailInfo);
+        this.props.navigation.navigate('Details');
+    };
+
+    keyExtractor = (post, index) => `${index}`;
+
+    renderItem = ({ item }) => (
         <Post
             onPress={this.goDetailsScreen}
             getPosts={this.props.getPosts}
@@ -42,7 +42,7 @@ class PostsComponent extends Component {
         if (_.isEmpty(this.props.posts)) {
             return (
                 <View style={styles.activity}>
-                    <ActivityIndicator size="large" color="#0000ff"/>
+                    <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             );
         }
@@ -50,8 +50,8 @@ class PostsComponent extends Component {
         return (
             <FlatList
                 data={this.props.posts}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
+                keyExtractor={this.keyExtractor}
+                renderItem={this.renderItem}
                 scrollEnabled={this.state.scrollEnabled}
             />
         );

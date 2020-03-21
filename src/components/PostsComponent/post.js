@@ -95,8 +95,8 @@ class Post extends PureComponent {
         }
     };
 
-    removePost = () => {
-        this.props.removePost(this.props.post.id);
+    removePost = async () => {
+        await this.props.removePost(this.props.post.id);
         this.props.getPosts();
     };
 

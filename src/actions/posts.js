@@ -91,7 +91,7 @@ export const addNewPost = ({ title, author, content, formattedDate, postNumber }
 };
 
 
-export const removePost = (postId) => {
+export const removePost = async (postId) => {
     try {
         return async dispatch => {
             await db.ref(`posts/${postId}`)
