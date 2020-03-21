@@ -14,15 +14,21 @@ class Post extends PureComponent {
         const position = new Animated.ValueXY();
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (evt, gestureState) => {
-                this.setTouchableDisable();
+                this.disableTouch();
                 return false;
             },
             onMoveShouldSetPanResponder: (evt, gestureState) => {
-                this.setTouchableDisable();
+                if (
+                    (gestureState.dx < 2 && gestureState.dx > -2)
+                    && (gestureState.dy < 2 && gestureState.dy > -2)
+                ) {
+                    return false;
+                }
+
                 return true;
             },
             onPanResponderTerminationRequest: (evt, gestureState) => {
-                this.setTouchableEnable();
+                this.enableTouch();
                 return false;
             },
             onPanResponderMove: (evt, gestureState) => {
@@ -49,6 +55,7 @@ class Post extends PureComponent {
                         .start(() => {
                             this.removePost();
                             this.setScrollViewEnabled(true);
+                            // this.enableTouch();
 
                             Animated.timing(this.state.position, {
                                 toValue: { x: 0, y: 0 },
@@ -59,20 +66,8 @@ class Post extends PureComponent {
             },
         });
 
-        this.state = { position, disableTouch: false };
+        this.state = { position, isTouchEnabled: false };
     }
-
-    setTouchableDisable = () => {
-      this.setState({
-          disableTouch: true
-      });
-    };
-
-    setTouchableEnable = () => {
-        this.setState({
-            disableTouch: false
-        });
-    };
 
     setScrollViewEnabled(enabled) {
         if (this.scrollViewEnabled !== enabled) {
@@ -80,6 +75,18 @@ class Post extends PureComponent {
             this.scrollViewEnabled = enabled;
         }
     }
+
+    enableTouch = () => {
+        this.setState({
+            isTouchEnabled: true
+        });
+    };
+
+    disableTouch = () => {
+        this.setState({
+            isTouchEnabled: false
+        });
+    };
 
 
     goDetailsScreen = (postDetailInfo) => {
@@ -101,7 +108,7 @@ class Post extends PureComponent {
                     {...this.panResponder.panHandlers}
                 >
                     <TouchableHighlight
-                        disabled={this.state.disableTouch}
+                        disabled={this.state.isTouchEnabled}
                         style={styles.innerPostContainer}
                         onPress={() => this.goDetailsScreen(this.props.post)}
                     >
@@ -111,31 +118,34 @@ class Post extends PureComponent {
                             </View>
 
                             <View style={styles.innerCell}>
-                                <View>
-                                    <Text style={styles.author}>
-                                        {this.props.post.title}
-                                    </Text>
-                                </View>
+                               <View>
+                                   <View>
+                                       <Text style={styles.author}>
+                                           {this.props.post.title}
+                                       </Text>
+                                   </View>
 
-                                <View style={styles.aboutContainer}>
-                                    <View style={styles.titleContainer}>
-                                        <Text style={styles.titleContent}>
-                                            Author:
-                                        </Text>
-                                        <Text>
-                                            {this.props.post.author}
-                                        </Text>
-                                    </View>
+                                   <View style={styles.aboutContainer}>
+                                       <View style={styles.titleContainer}>
+                                           <Text style={styles.titleContent}>
+                                               Author:
+                                           </Text>
+                                           <Text>
+                                               {this.props.post.author}
+                                           </Text>
+                                       </View>
 
-                                    <View style={styles.titleContainer}>
-                                        <Text style={styles.titleContent}>
-                                            Date:
-                                        </Text>
-                                        <Text>
-                                            {'10/01/19'}
-                                        </Text>
-                                    </View>
-                                </View>
+                                       <View style={styles.titleContainer}>
+                                           <Text style={styles.titleContent}>
+                                               Date:
+                                           </Text>
+                                           <Text>
+                                               {this.props.post.formattedDate}
+                                           </Text>
+                                       </View>
+                                   </View>
+                               </View>
+
                             </View>
                         </View>
                     </TouchableHighlight>
@@ -184,7 +194,7 @@ const styles = {
 
     innerPostContainer: {
         flexGrow: 1,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     aboutContainer: {
         flex: 1,

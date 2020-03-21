@@ -77,10 +77,11 @@ export const addNewPost = ({ title, author, content, formattedDate, postNumber }
 
             dispatch({
                 type: actionTypes.ADD_POST,
-                payload: 'Post success added!'
+                payload: 'Post successfully added!'
             });
             systemActions.stopLoading();
         } catch (e) {
+            console.log(e);
             dispatch({
                 type: actionTypes.ADD_POST_ERROR,
                 payload: 'Error, please try again later'

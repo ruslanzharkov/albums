@@ -7,9 +7,9 @@ target 'albums' do
 
   # Pods for albums
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core', '~> 5.19.0'
-  pod 'Firebase/Auth', '~> 5.19.0'
-  pod 'Firebase/Database', '~> 5.19.0'
+  pod 'Firebase/Core', '~> 6.13.0'
+  pod 'Firebase/Auth', '~> 6.13.0'
+  pod 'Firebase/Database', '~> 6.13.0'
 
   rn_path = '../node_modules/react-native'
 
@@ -30,6 +30,7 @@ target 'albums' do
       'RCTWebSocket',
     ]
     pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
+    pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
     pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
     post_install do |installer|
